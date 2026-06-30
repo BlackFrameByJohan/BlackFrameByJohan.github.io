@@ -44,14 +44,24 @@
             z-index: 5;
             background: rgba(0,0,0,0);
         }
-        /* ESCUDO INFERIOR TOTAL: Bloquea barra, adelantar, logo de YT y pantalla completa */
+        /* ESCUDO INFERIOR TOTAL REFORZADO: Bloquea por completo la pantalla completa, logos y barra */
         .bottom-full-shield {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60px; /* Cubre toda la barra de controles inferior */
+            height: 75px; /* Altura incrementada para garantizar el bloqueo */
             z-index: 5;
+            background: rgba(0,0,0,0);
+        }
+        /* Refuerzo adicional específico para la esquina inferior derecha */
+        .bottom-full-shield::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 120px;
+            height: 90px; /* Mayor altura en la esquina del botón fullscreen */
             background: rgba(0,0,0,0);
         }
     </style>
