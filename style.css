@@ -1,0 +1,291 @@
+/* CONFIGURACIÓN GENERAL INTERNA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    overflow-x: hidden;
+    -webkit-user-select: none; /* Bloquea que seleccionen texto */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* MENÚ SUPERIOR MINIMALISTA */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+header .logo {
+    font-weight: 700;
+    letter-spacing: 5px;
+    font-size: 1.1rem;
+}
+
+header .logo .sublogo {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #777;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+    font-weight: 400;
+}
+
+nav a:hover {
+    color: #a6a6a6;
+}
+
+/* PANTALLA DE BIENVENIDA (HERO) */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), #090909;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    letter-spacing: 15px;
+    margin-bottom: 15px;
+    animation: fadeIn 1.5s ease;
+}
+
+.hero-content .tagline {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    color: #888;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+}
+
+.btn-discover {
+    display: inline-block;
+    padding: 14px 35px;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: all 0.4s ease;
+}
+
+.btn-discover:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* DISEÑO DE LAS SECCIONES */
+.section {
+    padding: 120px 4%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.bg-darker {
+    background-color: #080808;
+}
+
+.section-meta {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+/* GALERÍA DE FOTOS PROFESIONAL */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #111;
+    aspect-ratio: 3 / 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+    pointer-events: none; /* Impide arrastrar la imagen */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+    filter: grayscale(0%);
+}
+
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.item-overlay span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 4px;
+}
+
+/* APARTADO DE VIDEO */
+.video-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #121212;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #444;
+    border: 1px dashed #222;
+}
+
+.video-placeholder i {
+    font-size: 2rem;
+}
+
+.video-placeholder span {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* PIE DE PÁGINA (CONTACTO) */
+footer {
+    padding: 100px 4% 50px 4%;
+    background-color: #050505;
+    text-align: center;
+    border-top: 1px solid #111;
+}
+
+footer h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.contact-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 50px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin-bottom: 70px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #666;
+}
+
+.copyright {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+@media (max-width: 768px) {
+    header { padding: 20px; }
+    nav { display: none; } /* Oculta menú complejo en móvil para limpieza */
+    .hero-content h1 { font-size: 2.3rem; letter-spacing: 8px; }
+    .hero-content .tagline { font-size: 0.7rem; letter-spacing: 4px; }
+    .section { padding: 80px 20px; }
+    .section-title { margin-bottom: 40px; font-size: 1.6rem; }
+    .gallery { grid-template-columns: 1fr; }
+    footer h2 { font-size: 1.8rem; }
+    .social-links { gap: 20px; }
+}
