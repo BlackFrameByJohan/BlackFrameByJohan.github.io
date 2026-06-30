@@ -57,8 +57,8 @@
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
-    <!-- AUDIO DE FONDO: Pista instrumental cinemática y minimalista sin copyright -->
-    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+    <!-- AUDIO DE FONDO: Piano y ambiente ultra suave, cinemático y sin copyright -->
+    <audio id="bg-music" src="https://assets.mixkit.co/music/preview/mixkit-serene-view-1174.mp3" loop></audio>
 
     <header>
         <div class="logo">BLACK FRAME<span class="sublogo">by JohanTG</span></div>
@@ -260,7 +260,7 @@
 
     <script src="script.js"></script>
 
-    <!-- MOTOR LOGICO DE CONTROL DE AUDIO MULTIPLAYER -->
+    <!-- MOTOR LOGICO ACTUALIZADO ANTICRUZADO DE AUDIO -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -269,6 +269,7 @@
 
         var players = [];
         var bgMusic = document.getElementById('bg-music');
+        var musicMutedGlobally = false; // Candado lógico para evitar que la música se reactive sola
 
         function onYouTubeIframeAPIReady() {
             var iframes = document.querySelectorAll('.portfolio-video');
@@ -285,44 +286,47 @@
             });
         }
 
-        // Activa la música instrumental de fondo al primer toque/scroll del usuario en la web
+        // Inicia la música ambiental suave al interactuar con el diseño
         window.addEventListener('click', function() {
-            if (bgMusic && bgMusic.paused) {
-                bgMusic.volume = 0.4; // Ajusta la música ambiental a un volumen suave del 40%
-                bgMusic.play().catch(function(e){ console.log("Audio en espera de interacción") });
+            if (bgMusic && bgMusic.paused && !musicMutedGlobally) {
+                bgMusic.volume = 0.25; // Nivel muy bajo y sofisticado (25%)
+                bgMusic.play().catch(function(e){ console.log("Audio retenido") });
             }
         }, { once: false });
 
         function focusVideo(activeIndex) {
-            // 1. Pausar por completo la pista instrumental libre de fondo
+            // Candado estricto: Matamos el volumen de la música de fondo por completo
+            musicMutedGlobally = true;
             if (bgMusic) {
                 bgMusic.pause();
+                bgMusic.volume = 0; 
             }
 
-            // 2. Silenciar todos los videos para evitar cruces extraños
-            players.forEach(function(player) {
+            // Silenciar de raíz todos los videos cargados en la grilla antes de activar el nuevo
+            players.forEach(function(player, index) {
                 if (player && typeof player.mute === 'function') {
                     player.mute();
                 }
+                // Reseteamos las capas táctiles para que el anterior vuelva a ser protegible
+                var captures = document.querySelectorAll('.video-click-capture');
+                if (index !== activeIndex) {
+                    captures[index].style.pointerEvents = 'auto';
+                }
             });
 
-            // 3. Encender el audio del video clickeado
+            // Activar únicamente el audio del reproductor actual seleccionado
             var targetPlayer = players[activeIndex];
             if (targetPlayer && typeof targetPlayer.unMute === 'function') {
                 targetPlayer.unMute();
-                targetPlayer.setVolume(80); 
+                targetPlayer.setVolume(85); 
                 targetPlayer.playVideo();
             }
 
-            // 4. Liberar controles nativos del reproductor activo
-            var captures = document.querySelectorAll('.video-click-capture');
-            captures.forEach(function(cap, i) {
-                if (i === activeIndex) {
-                    cap.style.pointerEvents = 'none'; 
-                } else {
-                    cap.style.pointerEvents = 'auto';  
-                }
-            });
+            // Liberamos la franja de este video para interactuar con botones de subtítulos o volumen
+            var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
+            if (currentCapture) {
+                currentCapture.style.pointerEvents = 'none';
+            }
         }
     </script>
 </body>
