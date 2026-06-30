@@ -43,17 +43,16 @@
         }
 
         /* ==========================================================================
-           SISTEMA DE SEGURIDAD PARA VIDEOS (TÍTULOS VISIBLES - CONTROL DE AMPLIAR)
+           SISTEMA DE SEGURIDAD (SOLO PARA VIDEOS CORPORATIVOS/MARCAS)
            ========================================================================== */
         .video-wrapper {
             position: relative;
             overflow: hidden;
             width: 100%;
-            padding-bottom: 56.25%; /* Mantiene proporción 16:9 perfecta */
+            padding-bottom: 56.25%; 
             background: #000;
         }
 
-        /* El iframe se queda en tamaño estándar (0px de desfase) para que se lea el título */
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -63,7 +62,7 @@
             border: 0;
         }
 
-        /* Capa invisible para detectar el primer clic de activación de sonido */
+        /* Capa invisible para detectar el primer clic */
         .video-click-capture {
             position: absolute;
             top: 0;
@@ -75,28 +74,28 @@
             background: rgba(0,0,0,0);
         }
 
-        /* ESCUDO SUPERIOR (Opcional - por si intentan dar clic al logo/perfil) */
+        /* ESCUDO SUPERIOR IZQUIERDO: Bloquea accesos no deseados */
         .top-left-shield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 60%; 
-            height: 60px; 
+            width: 75%; 
+            height: 55px; 
             z-index: 15;
             background: rgba(0,0,0,0);
             pointer-events: auto; 
         }
 
-        /* ESCUDO INFERIOR AMPLIADO: Cubre agresivamente la esquina inferior de controles (Ampliación) */
+        /* ESCUDO INFERIOR DERECHO SEGURO: Bloquea ampliación y logo de YT */
         .bottom-full-shield {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 100%;
-            height: 50px; /* Cubre toda la barra de progreso y botones tras activar reproducción */
+            width: 45%; 
+            height: 50px; 
             z-index: 15;
             background: rgba(0,0,0,0);
-            pointer-events: auto; /* Bloquea el clic definitivamente */
+            pointer-events: auto; 
         }
     </style>
 </head>
@@ -136,13 +135,13 @@
         </div>
     </section>
 
-    <!-- SECCIÓN VIDEOS CON BLOQUEO DE AMPLIACIÓN -->
+    <!-- SECCIÓN VIDEOS -->
     <section id="videography" class="section bg-darker">
         <p class="section-meta">02 / TRABAJOS audiovisuales</p>
         <h2 class="section-title">Videos</h2>
         <div class="video-grid">
             
-            <!-- 1. EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR (2025) -->
+            <!-- 1. CHARCUTERO LEÑADOR (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -156,7 +155,7 @@
                 </div>
             </div>
 
-            <!-- 2. LUMINACYCLE - PRODUCTO DE DISEÑO (2025) -->
+            <!-- 2. LUMINACYCLE (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -170,7 +169,7 @@
                 </div>
             </div>
 
-            <!-- 3. VENTE ANGIELLA (2024) -->
+            <!-- 3. VENTE ANGIELLA (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -184,13 +183,11 @@
                 </div>
             </div>
 
-            <!-- 4. TOWERS ANT - HACE TIEMPO NO TE VEO (2024) -->
+            <!-- 4. TOWERS ANT - HACE TIEMPO NO TE VEO (LIBRE SIN ESCUDOS) -->
             <div class="video-item">
                 <div class="video-wrapper">
-                    <div class="top-left-shield"></div>
-                    <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3>
@@ -198,7 +195,7 @@
                 </div>
             </div>
 
-            <!-- 5. LAMA GLAMA - ENTREVISTA (2023) -->
+            <!-- 5. LAMA GLAMA (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -212,13 +209,11 @@
                 </div>
             </div>
 
-            <!-- 6. SIEMPRE ME HACES FALTA KEOFF OFICIAL (2023) -->
+            <!-- 6. SIEMPRE ME HACES FALTA KEOFF OFICIAL (LIBRE SIN ESCUDOS) -->
             <div class="video-item">
                 <div class="video-wrapper">
-                    <div class="top-left-shield"></div>
-                    <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(5)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3>
@@ -226,13 +221,11 @@
                 </div>
             </div>
 
-            <!-- 7. TOWERS ANT - TE PASO A BUSCAR (2022) -->
+            <!-- 7. TOWERS ANT - TE PASO A BUSCAR (LIBRE SIN ESCUDOS) -->
             <div class="video-item">
                 <div class="video-wrapper">
-                    <div class="top-left-shield"></div>
-                    <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(6)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3>
@@ -240,7 +233,7 @@
                 </div>
             </div>
 
-            <!-- 8. REDSKINS (2022) -->
+            <!-- 8. REDSKINS (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -254,15 +247,11 @@
                 </div>
             </div>
 
-          
-
-            <!-- 9. DENNISBBY ft TOWERS ANT - DEMONIA (2021) -->
+            <!-- 9. DENNISBBY ft TOWERS ANT - DEMONIA (LIBRE SIN ESCUDOS) -->
             <div class="video-item">
                 <div class="video-wrapper">
-                    <div class="top-left-shield"></div>
-                    <div class="bottom-full-shield"></div>
-                    <div class="video-click-capture" onclick="focusVideo(9)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(8)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3>
