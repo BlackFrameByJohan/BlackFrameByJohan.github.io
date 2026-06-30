@@ -44,21 +44,19 @@
             z-index: 5;
             background: rgba(0,0,0,0);
         }
+        /* Escudo inferior derecho ampliado para bloquear por completo el logo/link de YouTube */
         .logo-shield {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 100px;
-            height: 40px;
-            z-index: 5;
+            width: 150px;
+            height: 55px;
+            z-index: 6; /* Prioridad alta de bloqueo */
             background: rgba(0,0,0,0);
         }
     </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
-
-    <!-- AUDIO DE FONDO: Piano y ambiente ultra suave, cinemático y sin copyright -->
-    <audio id="bg-music" src="https://assets.mixkit.co/music/preview/mixkit-serene-view-1174.mp3" loop></audio>
 
     <header>
         <div class="logo">BLACK FRAME<span class="sublogo">by JohanTG</span></div>
@@ -260,7 +258,7 @@
 
     <script src="script.js"></script>
 
-    <!-- MOTOR LOGICO ACTUALIZADO ANTICRUZADO DE AUDIO -->
+    <!-- MOTOR LÓGICO DE CONTROL MULTIPLAYER DE AUDIO (SIN MÚSICA DE FONDO) -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -268,8 +266,6 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var players = [];
-        var bgMusic = document.getElementById('bg-music');
-        var musicMutedGlobally = false; // Candado lógico para evitar que la música se reactive sola
 
         function onYouTubeIframeAPIReady() {
             var iframes = document.querySelectorAll('.portfolio-video');
@@ -278,7 +274,7 @@
                 players.push(new YT.Player(iframe.id, {
                     events: {
                         'onReady': function(event) {
-                            event.target.mute(); 
+                            event.target.mute(); // Arrancan reproduciéndose mudos y limpios
                             event.target.playVideo();
                         }
                     }
@@ -286,22 +282,7 @@
             });
         }
 
-        // Inicia la música ambiental suave al interactuar con el diseño
-        window.addEventListener('click', function() {
-            if (bgMusic && bgMusic.paused && !musicMutedGlobally) {
-                bgMusic.volume = 0.25; // Nivel muy bajo y sofisticado (25%)
-                bgMusic.play().catch(function(e){ console.log("Audio retenido") });
-            }
-        }, { once: false });
-
         function focusVideo(activeIndex) {
-            // Candado estricto: Matamos el volumen de la música de fondo por completo
-            musicMutedGlobally = true;
-            if (bgMusic) {
-                bgMusic.pause();
-                bgMusic.volume = 0; 
-            }
-
             // Silenciar de raíz todos los videos cargados en la grilla antes de activar el nuevo
             players.forEach(function(player, index) {
                 if (player && typeof player.mute === 'function') {
