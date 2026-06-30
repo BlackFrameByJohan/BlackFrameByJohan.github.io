@@ -5,16 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Frame by JohanTG | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Contenedor responsivo 16:9 */
+        /* ==========================================================================
+           SECCIÓN FOTOGRAFÍA: FOTOS MÁS PEQUEÑAS Y 100% BLOQUEADAS
+           ========================================================================== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 25px;
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            border-radius: 4px; 
+            aspect-ratio: 1 / 1; 
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.9); 
+        }
+
+        .gallery:hover .gallery-item img {
+            filter: brightness(1);
+        }
+
+        /* ==========================================================================
+           SISTEMA DE SEGURIDAD PARA VIDEOS (TÍTULOS VISIBLES - CONTROL DE AMPLIAR)
+           ========================================================================== */
         .video-wrapper {
             position: relative;
             overflow: hidden;
             width: 100%;
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%; /* Mantiene proporción 16:9 perfecta */
             background: #000;
         }
+
+        /* El iframe se queda en tamaño estándar (0px de desfase) para que se lea el título */
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -23,7 +62,8 @@
             height: 100%;
             border: 0;
         }
-        /* Capa invisible intermedia para detectar el primer clic */
+
+        /* Capa invisible para detectar el primer clic de activación de sonido */
         .video-click-capture {
             position: absolute;
             top: 0;
@@ -34,27 +74,29 @@
             cursor: pointer;
             background: rgba(0,0,0,0);
         }
-        /* ESCUDO SUPERIOR IZQUIERDO REFORZADO */
+
+        /* ESCUDO SUPERIOR (Opcional - por si intentan dar clic al logo/perfil) */
         .top-left-shield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 70%; 
-            height: 70px; 
+            width: 60%; 
+            height: 60px; 
             z-index: 15;
             background: rgba(0,0,0,0);
             pointer-events: auto; 
         }
-        /* ESCUDO INFERIOR ULTRA REFORZADO */
+
+        /* ESCUDO INFERIOR AMPLIADO: Cubre agresivamente la esquina inferior de controles (Ampliación) */
         .bottom-full-shield {
             position: absolute;
             bottom: 0;
-            left: 0;
+            right: 0;
             width: 100%;
-            height: 95px; 
+            height: 50px; /* Cubre toda la barra de progreso y botones tras activar reproducción */
             z-index: 15;
             background: rgba(0,0,0,0);
-            pointer-events: auto; 
+            pointer-events: auto; /* Bloquea el clic definitivamente */
         }
     </style>
 </head>
@@ -77,25 +119,24 @@
         </div>
     </section>
 
+    <!-- SECCIÓN FOTOGRAFÍA -->
     <section id="photography" class="section">
         <p class="section-meta">01 / PORTAFOLIO</p>
         <h2 class="section-title">Fotografía</h2>
         <div class="gallery">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Fotografía Black Frame">
-                <div class="item-overlay"><span>Ver Detalles</span></div>
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000" alt="Fotografía Black Frame">
-                <div class="item-overlay"><span>Ver Detalles</span></div>
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
             </div>
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000" alt="Fotografía Black Frame">
-                <div class="item-overlay"><span>Ver Detalles</span></div>
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
             </div>
         </div>
     </section>
 
+    <!-- SECCIÓN VIDEOS CON BLOQUEO DE AMPLIACIÓN -->
     <section id="videography" class="section bg-darker">
         <p class="section-meta">02 / TRABAJOS audiovisuales</p>
         <h2 class="section-title">Videos</h2>
@@ -107,7 +148,6 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(0)"></div>
-                    <!-- Eliminado: allowfullscreen y fs=1 -->
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
