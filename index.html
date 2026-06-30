@@ -6,6 +6,33 @@
     <title>Black Frame by JohanTG | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Capa protectora transparente para bloquear interacción pero permitir activar sonido */
+        .video-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 56.25%; /* Relación 16:9 */
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-overlay-click {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+            background: rgba(0,0,0,0); /* Invisible */
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
@@ -56,8 +83,9 @@
 
             <!-- 1. EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR (2025) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/YgkKt_-cB_g?autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR</h3>
@@ -67,8 +95,9 @@
 
             <!-- 2. LUMINACYCLE - PRODUCTO DE DISEÑO (2025) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/B-KO_RlynAA?autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LUMINACYCLE - PRODUCTO DE DISEÑO</h3>
@@ -78,8 +107,9 @@
 
             <!-- 3. VENTE ANGIELLA (2024) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/rIhOsdOEEZw?autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">VENTE ANGIELLA</h3>
@@ -89,8 +119,9 @@
 
             <!-- 4. TOWERS ANT - HACE TIEMPO NO TE VEO (2024) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/iH1Dfa2kqmI?autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3>
@@ -100,8 +131,9 @@
 
             <!-- 5. LAMA GLAMA - ENTREVISTA (2023) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/hPWzdoeQlbo?autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LAMA GLAMA - ENTREVISTA</h3>
@@ -111,8 +143,9 @@
 
             <!-- 6. SIEMPRE ME HACES FALTA KEOFF OFICIAL (2023) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/tHS9mCiuBcg?autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3>
@@ -122,8 +155,9 @@
 
             <!-- 7. TOWERS ANT - TE PASO A BUSCAR (2022) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/rPY4IWxWIt0?autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3>
@@ -133,8 +167,9 @@
 
             <!-- 8. REDSKINS (2022) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/hhmS6yTgoZQ?autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">REDSKINS</h3>
@@ -144,8 +179,9 @@
 
             <!-- 9. HELP - 4TA DIMENSIÓN (2022) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/kLup6eNisb8?autoplay=1&mute=1&loop=1&playlist=kLup6eNisb8&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/kLup6eNisb8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=kLup6eNisb8&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">HELP - 4TA DIMENSIÓN</h3>
@@ -155,8 +191,9 @@
 
             <!-- 10. DENNISBBY ft TOWERS ANT - DEMONIA (2021) -->
             <div class="video-item">
-                <div class="video-wrapper" style="position: relative; overflow: hidden;">
-                    <iframe src="https://www.youtube-nocookie.com/embed/Rbv-yhOezFE?autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=0&modestbranding=1&rel=0&cc_load_policy=0&enablejsapi=1" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>
+                <div class="video-wrapper">
+                    <div class="video-overlay-click" onclick="unmuteAll()"></div>
+                    <iframe class="yt-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=0&modestbranding=1&rel=0&cc_load_policy=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3>
@@ -182,22 +219,42 @@
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Script inteligente para activar sonido tras interactuar con la web -->
+
+    <!-- Sistema JavaScript nativo para activar el audio de forma interactiva y segura -->
     <script>
-        function activarSonidoVideos() {
-            const iframes = document.querySelectorAll('iframe');
-            iframes.forEach(iframe => {
-                iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var players = [];
+        function onYouTubeIframeAPIReady() {
+            var iframes = document.querySelectorAll('.yt-video');
+            iframes.forEach(function(iframe, index) {
+                iframe.id = 'yt-player-' + index;
+                players.push(new YT.Player(iframe.id, {
+                    events: {
+                        'onReady': function(event) {
+                            event.target.playVideo();
+                        }
+                    }
+                }));
             });
-            // Remover eventos una vez activado
-            document.removeEventListener('click', activarSonidoVideos);
-            document.removeEventListener('scroll', activarSonidoVideos);
-            document.removeEventListener('touchstart', activarSonidoVideos);
         }
-        document.addEventListener('click', activarSonidoVideos);
-        document.addEventListener('scroll', activarSonidoVideos);
-        document.addEventListener('touchstart', activarSonidoVideos);
+
+        function unmuteAll() {
+            players.forEach(function(player) {
+                if (player && typeof player.unMute === 'function') {
+                    player.unMute();
+                    player.setVolume(80); // Ajusta el volumen al 80%
+                }
+            });
+            // Elimina las capas invisibles para que no estorben después del primer toque
+            var overlays = document.querySelectorAll('.video-overlay-click');
+            overlays.forEach(function(overlay) {
+                overlay.style.display = 'none';
+            });
+        }
     </script>
 </body>
 </html>
