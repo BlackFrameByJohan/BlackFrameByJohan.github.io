@@ -3,68 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Frame by Johan</title>
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        body{
-            background:#000;
-            color:white;
-            font-family:Arial, Helvetica, sans-serif;
-        }
-
-        .hero{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            flex-direction:column;
-            text-align:center;
-        }
-
-        h1{
-            font-size:70px;
-            letter-spacing:8px;
-        }
-
-        h2{
-            margin-top:15px;
-            color:#aaa;
-            font-weight:300;
-        }
-
-        a{
-            margin-top:40px;
-            padding:15px 40px;
-            border:1px solid white;
-            color:white;
-            text-decoration:none;
-            transition:.3s;
-        }
-
-        a:hover{
-            background:white;
-            color:black;
-        }
-    </style>
+    <title>Black Frame by Johan | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
-<body>
+    <header>
+        <div class="logo">BLACK FRAME<span class="sublogo">by Johan</span></div>
+        <nav>
+            <a href="#photography">Fotografía</a>
+            <a href="#videography">Video</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
 
-<section class="hero">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BLACK FRAME</h1>
+            <p class="tagline">FOTOGRAFÍA & VIDEO MINIMALISTA</p>
+            <a href="#photography" class="btn-discover">Descubrir Portafolio</a>
+        </div>
+    </section>
 
-<h1>BLACK FRAME</h1>
+    <section id="photography" class="section">
+        <p class="section-meta">01 / PORTAFOLIO</p>
+        <h2 class="section-title">Fotografía</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Fotografía Black Frame">
+                <div class="item-overlay"><span>Ver Detalles</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000" alt="Fotografía Black Frame">
+                <div class="item-overlay"><span>Ver Detalles</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000" alt="Fotografía Black Frame">
+                <div class="item-overlay"><span>Ver Detalles</span></div>
+            </div>
+        </div>
+    </section>
 
-<h2>by Johan</h2>
+    <section id="videography" class="section bg-darker">
+        <p class="section-meta">02 / TRABAJOS audiovisuales</p>
+        <h2 class="section-title">Video Reel</h2>
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <div class="video-placeholder">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Video en producción</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="#">Portfolio</a>
+    <footer id="contact">
+        <div class="contact-content">
+            <p class="section-meta">03 / CONECTAR</p>
+            <h2>Creemos algo juntos.</h2>
+            <p class="contact-desc">Disponible para proyectos locales e internacionales.</p>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                <a href="#" target="_blank"><i class="fab fa-tiktok"></i> TIKTOK</a>
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+                <a href="mailto:tu-correo@email.com"><i class="fas fa-envelope"></i> EMAIL</a>
+            </div>
+            <p class="copyright">&copy; 2026 BLACK FRAME. Todos los derechos reservados. Prohibida la reproducción de imágenes.</p>
+        </div>
+    </footer>
 
-</section>
-
+    <script src="script.js"></script>
 </body>
 </html>
