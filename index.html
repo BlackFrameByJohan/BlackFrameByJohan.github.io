@@ -23,29 +23,42 @@
             height: 100%;
             border: 0;
         }
-        /* Bloquea solo la parte superior (título y botón compartir) */
+        /* Capa invisible intermedia para detectar el clic antes que YouTube */
+        .video-click-capture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            cursor: pointer;
+            background: rgba(0,0,0,0);
+        }
+        /* Bloqueos estratégicos para que no se vayan a YouTube */
         .top-shield {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 60px;
+            height: 50px;
             z-index: 5;
             background: rgba(0,0,0,0);
         }
-        /* Bloquea la esquina inferior derecha (logo de YouTube que redirige fuera) */
         .logo-shield {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 120px;
-            height: 45px;
+            width: 100px;
+            height: 40px;
             z-index: 5;
             background: rgba(0,0,0,0);
         }
     </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <!-- AUDIO DE FONDO: Pista instrumental cinemática y minimalista sin copyright -->
+    <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
 
     <header>
         <div class="logo">BLACK FRAME<span class="sublogo">by JohanTG</span></div>
@@ -93,7 +106,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/YgkKt_-cB_g?autoplay=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(0)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR</h3>
@@ -106,7 +120,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/B-KO_RlynAA?autoplay=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(1)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LUMINACYCLE - PRODUCTO DE DISEÑO</h3>
@@ -119,7 +134,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/rIhOsdOEEZw?autoplay=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(2)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">VENTE ANGIELLA</h3>
@@ -132,7 +148,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/iH1Dfa2kqmI?autoplay=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(3)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3>
@@ -145,7 +162,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/hPWzdoeQlbo?autoplay=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(4)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LAMA GLAMA - ENTREVISTA</h3>
@@ -158,7 +176,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/tHS9mCiuBcg?autoplay=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(5)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3>
@@ -171,7 +190,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/rPY4IWxWIt0?autoplay=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(6)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3>
@@ -184,7 +204,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/hhmS6yTgoZQ?autoplay=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(7)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">REDSKINS</h3>
@@ -197,7 +218,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/kLup6eNisb8?autoplay=1&loop=1&playlist=kLup6eNisb8&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(8)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/kLup6eNisb8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=kLup6eNisb8&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">HELP - 4TA DIMENSIÓN</h3>
@@ -210,7 +232,8 @@
                 <div class="video-wrapper">
                     <div class="top-shield"></div>
                     <div class="logo-shield"></div>
-                    <iframe src="https://www.youtube.com/embed/Rbv-yhOezFE?autoplay=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <div class="video-click-capture" onclick="focusVideo(9)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3>
@@ -236,5 +259,71 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- MOTOR LOGICO DE CONTROL DE AUDIO MULTIPLAYER -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var players = [];
+        var bgMusic = document.getElementById('bg-music');
+
+        function onYouTubeIframeAPIReady() {
+            var iframes = document.querySelectorAll('.portfolio-video');
+            iframes.forEach(function(iframe, index) {
+                iframe.id = 'player-' + index;
+                players.push(new YT.Player(iframe.id, {
+                    events: {
+                        'onReady': function(event) {
+                            event.target.mute(); 
+                            event.target.playVideo();
+                        }
+                    }
+                }));
+            });
+        }
+
+        // Activa la música instrumental de fondo al primer toque/scroll del usuario en la web
+        window.addEventListener('click', function() {
+            if (bgMusic && bgMusic.paused) {
+                bgMusic.volume = 0.4; // Ajusta la música ambiental a un volumen suave del 40%
+                bgMusic.play().catch(function(e){ console.log("Audio en espera de interacción") });
+            }
+        }, { once: false });
+
+        function focusVideo(activeIndex) {
+            // 1. Pausar por completo la pista instrumental libre de fondo
+            if (bgMusic) {
+                bgMusic.pause();
+            }
+
+            // 2. Silenciar todos los videos para evitar cruces extraños
+            players.forEach(function(player) {
+                if (player && typeof player.mute === 'function') {
+                    player.mute();
+                }
+            });
+
+            // 3. Encender el audio del video clickeado
+            var targetPlayer = players[activeIndex];
+            if (targetPlayer && typeof targetPlayer.unMute === 'function') {
+                targetPlayer.unMute();
+                targetPlayer.setVolume(80); 
+                targetPlayer.playVideo();
+            }
+
+            // 4. Liberar controles nativos del reproductor activo
+            var captures = document.querySelectorAll('.video-click-capture');
+            captures.forEach(function(cap, i) {
+                if (i === activeIndex) {
+                    cap.style.pointerEvents = 'none'; 
+                } else {
+                    cap.style.pointerEvents = 'auto';  
+                }
+            });
+        }
+    </script>
 </body>
 </html>
