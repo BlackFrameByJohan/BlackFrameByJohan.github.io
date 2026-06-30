@@ -34,24 +34,24 @@
             cursor: pointer;
             background: rgba(0,0,0,0);
         }
-        /* Bloqueos estratégicos para que no se vayan a YouTube */
+        /* Escudo superior optimizado: Deja libre el área central para el botón [CC] de subtítulos */
         .top-shield {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
+            right: 0;
+            width: 80px;
+            height: 45px;
             z-index: 5;
             background: rgba(0,0,0,0);
         }
-        /* Escudo inferior derecho ampliado para bloquear por completo el logo/link de YouTube */
+        /* Escudo inferior derecho ampliado para bloquear el logo de YouTube y la opción de compartir */
         .logo-shield {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 150px;
-            height: 55px;
-            z-index: 6; /* Prioridad alta de bloqueo */
+            width: 160px;
+            height: 65px;
+            z-index: 6; 
             background: rgba(0,0,0,0);
         }
     </style>
@@ -258,7 +258,7 @@
 
     <script src="script.js"></script>
 
-    <!-- MOTOR LÓGICO DE CONTROL MULTIPLAYER DE AUDIO (SIN MÚSICA DE FONDO) -->
+    <!-- MOTOR LÓGICO DE CONTROL MULTIPLAYER DE AUDIO -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -274,7 +274,7 @@
                 players.push(new YT.Player(iframe.id, {
                     events: {
                         'onReady': function(event) {
-                            event.target.mute(); // Arrancan reproduciéndose mudos y limpios
+                            event.target.mute(); 
                             event.target.playVideo();
                         }
                     }
@@ -283,19 +283,18 @@
         }
 
         function focusVideo(activeIndex) {
-            // Silenciar de raíz todos los videos cargados en la grilla antes de activar el nuevo
+            // Silenciar todos los videos antes de encender el nuevo
             players.forEach(function(player, index) {
                 if (player && typeof player.mute === 'function') {
                     player.mute();
                 }
-                // Reseteamos las capas táctiles para que el anterior vuelva a ser protegible
                 var captures = document.querySelectorAll('.video-click-capture');
                 if (index !== activeIndex) {
                     captures[index].style.pointerEvents = 'auto';
                 }
             });
 
-            // Activar únicamente el audio del reproductor actual seleccionado
+            // Activar únicamente el audio del seleccionado
             var targetPlayer = players[activeIndex];
             if (targetPlayer && typeof targetPlayer.unMute === 'function') {
                 targetPlayer.unMute();
@@ -303,7 +302,7 @@
                 targetPlayer.playVideo();
             }
 
-            // Liberamos la franja de este video para interactuar con botones de subtítulos o volumen
+            // Permitir la interacción directa con el centro del reproductor
             var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
             if (currentCapture) {
                 currentCapture.style.pointerEvents = 'none';
