@@ -23,46 +23,38 @@
             height: 100%;
             border: 0;
         }
-        /* Capa invisible intermedia para detectar el clic antes que YouTube */
+        /* Capa invisible intermedia para detectar el primer clic */
         .video-click-capture {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 4;
+            z-index: 10;
             cursor: pointer;
             background: rgba(0,0,0,0);
         }
-        /* ESCUDO SUPERIOR IZQUIERDO: Bloquea tu foto de perfil y nombre de canal */
+        /* ESCUDO SUPERIOR IZQUIERDO REFORZADO: Bloquea perfil y nombre sin dejar píxeles sueltos */
         .top-left-shield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 65%; /* Cubre de forma segura el perfil */
-            height: 55px;
-            z-index: 5;
+            width: 70%; /* Ampliado para cubrir más espacio horizontal */
+            height: 70px; /* Incrementado para evitar fugas de clics arriba */
+            z-index: 15;
             background: rgba(0,0,0,0);
+            pointer-events: auto; /* Siempre activo para bloquear */
         }
-        /* ESCUDO INFERIOR TOTAL REFORZADO: Bloquea por completo la pantalla completa, logos y barra */
+        /* ESCUDO INFERIOR ULTRA REFORZADO: Bloquea barra, adelantos y botón de pantalla completa */
         .bottom-full-shield {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 75px; /* Altura incrementada para garantizar el bloqueo */
-            z-index: 5;
+            height: 95px; /* Altura masiva para garantizar que tape el botón Fullscreen en cualquier resolución */
+            z-index: 15;
             background: rgba(0,0,0,0);
-        }
-        /* Refuerzo adicional específico para la esquina inferior derecha */
-        .bottom-full-shield::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 120px;
-            height: 90px; /* Mayor altura en la esquina del botón fullscreen */
-            background: rgba(0,0,0,0);
+            pointer-events: auto; /* Siempre activo para bloquear */
         }
     </style>
 </head>
@@ -268,7 +260,7 @@
 
     <script src="script.js"></script>
 
-    <!-- MOTOR LOGICO MULTIPLAYER -->
+    <!-- MOTOR LÓGICO MULTIPLAYER -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -293,7 +285,6 @@
         }
 
         function focusVideo(activeIndex) {
-            // Silencia los reproductores restantes antes de dar paso al seleccionado
             players.forEach(function(player, index) {
                 if (player && typeof player.mute === 'function') {
                     player.mute();
@@ -304,7 +295,6 @@
                 }
             });
 
-            // Desbloquea sonido al video objetivo
             var targetPlayer = players[activeIndex];
             if (targetPlayer && typeof targetPlayer.unMute === 'function') {
                 targetPlayer.unMute();
@@ -312,7 +302,7 @@
                 targetPlayer.playVideo();
             }
 
-            // Habilita interacción únicamente para la barra superior derecha libre
+            // Desactiva la captura central para que puedan tocar los botones nativos superiores derechos
             var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
             if (currentCapture) {
                 currentCapture.style.pointerEvents = 'none';
