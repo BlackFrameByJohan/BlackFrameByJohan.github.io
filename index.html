@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Frame by JohanTG | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Contenedor responsivo 16:9 */
         .video-wrapper {
@@ -34,27 +34,27 @@
             cursor: pointer;
             background: rgba(0,0,0,0);
         }
-        /* ESCUDO SUPERIOR IZQUIERDO REFORZADO: Bloquea perfil y nombre sin dejar píxeles sueltos */
+        /* ESCUDO SUPERIOR IZQUIERDO REFORZADO */
         .top-left-shield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 70%; /* Ampliado para cubrir más espacio horizontal */
-            height: 70px; /* Incrementado para evitar fugas de clics arriba */
+            width: 70%; 
+            height: 70px; 
             z-index: 15;
             background: rgba(0,0,0,0);
-            pointer-events: auto; /* Siempre activo para bloquear */
+            pointer-events: auto; 
         }
-        /* ESCUDO INFERIOR ULTRA REFORZADO: Bloquea barra, adelantos y botón de pantalla completa */
+        /* ESCUDO INFERIOR ULTRA REFORZADO */
         .bottom-full-shield {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 95px; /* Altura masiva para garantizar que tape el botón Fullscreen en cualquier resolución */
+            height: 95px; 
             z-index: 15;
             background: rgba(0,0,0,0);
-            pointer-events: auto; /* Siempre activo para bloquear */
+            pointer-events: auto; 
         }
     </style>
 </head>
@@ -107,7 +107,8 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(0)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <!-- Eliminado: allowfullscreen y fs=1 -->
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR</h3>
@@ -121,7 +122,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(1)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LUMINACYCLE - PRODUCTO DE DISEÑO</h3>
@@ -135,7 +136,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(2)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">VENTE ANGIELLA</h3>
@@ -149,7 +150,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3>
@@ -163,7 +164,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(4)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LAMA GLAMA - ENTREVISTA</h3>
@@ -177,7 +178,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(5)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3>
@@ -191,7 +192,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(6)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3>
@@ -205,7 +206,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(7)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">REDSKINS</h3>
@@ -219,7 +220,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(8)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/kLup6eNisb8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=kLup6eNisb8&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/kLup6eNisb8?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=kLup6eNisb8&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">HELP - 4TA DIMENSIÓN</h3>
@@ -233,7 +234,7 @@
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(9)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
                     <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3>
@@ -302,7 +303,6 @@
                 targetPlayer.playVideo();
             }
 
-            // Desactiva la captura central para que puedan tocar los botones nativos superiores derechos
             var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
             if (currentCapture) {
                 currentCapture.style.pointerEvents = 'none';
