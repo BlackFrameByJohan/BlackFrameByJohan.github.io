@@ -1,151 +1,155 @@
 /* CONFIGURACIÓN GENERAL INTERNA */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #0d0d0d;
+    background-color: #050505; /* Negro más puro y serio */
     color: #ffffff;
     overflow-x: hidden;
-    -webkit-user-select: none; /* Bloquea que seleccionen texto */
-    -moz-user-select: none;
-    -ms-user-select: none;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-user-select: none;
     user-select: none;
 }
 
-/* MENÚ SUPERIOR MINIMALISTA */
+/* MENÚ SUPERIOR ELEGANTE */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 4%;
+    padding: 40px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: rgba(13, 13, 13, 0.75);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: linear-gradient(to bottom, rgba(5,5,5,0.9), rgba(5,5,5,0));
 }
 
 header .logo {
+    font-family: 'Cinzel', serif;
     font-weight: 700;
-    letter-spacing: 5px;
-    font-size: 1.1rem;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
 }
 
 header .logo .sublogo {
     display: block;
-    font-size: 0.7rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    color: #777;
-    margin-top: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 5px;
+    color: #aaaaaa;
+    margin-top: 5px;
     text-transform: uppercase;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-left: 25px;
-    transition: color 0.3s ease;
+    letter-spacing: 3px;
+    margin-left: 35px;
+    transition: color 0.4s ease;
     font-weight: 400;
 }
 
 nav a:hover {
-    color: #a6a6a6;
+    color: #c5a880; /* Un toque dorado sutil de elegancia */
 }
 
-/* PANTALLA DE BIENVENIDA (HERO) */
+/* PORTADA PRINCIPAL (HERO) */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), #090909;
+    background: #050505;
     padding: 0 20px;
 }
 
 .hero-content h1 {
-    font-size: 4.5rem;
-    font-weight: 900;
-    letter-spacing: 15px;
-    margin-bottom: 15px;
-    animation: fadeIn 1.5s ease;
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 20px;
+    margin-bottom: 20px;
+    text-indent: 20px; /* Centra perfectamente por el espaciado */
 }
 
 .hero-content .tagline {
-    font-size: 0.85rem;
-    letter-spacing: 6px;
-    color: #888;
-    margin-bottom: 45px;
-    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #c5a880; /* Dorado elegante */
+    margin-bottom: 50px;
 }
 
 .btn-discover {
     display: inline-block;
-    padding: 14px 35px;
-    border: 1px solid #ffffff;
+    padding: 16px 45px;
+    border: 1px solid #c5a880;
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    transition: all 0.4s ease;
+    letter-spacing: 4px;
+    transition: all 0.5s ease;
+    background: transparent;
 }
 
 .btn-discover:hover {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #c5a880;
+    color: #050505;
 }
 
 /* DISEÑO DE LAS SECCIONES */
 .section {
-    padding: 120px 4%;
+    padding: 140px 6%;
     max-width: 1600px;
     margin: 0 auto;
 }
 
 .bg-darker {
-    background-color: #080808;
+    background-color: #020202;
 }
 
 .section-meta {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    color: #555;
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+    color: #555555;
     text-transform: uppercase;
     margin-bottom: 15px;
 }
 
 .section-title {
-    font-size: 2rem;
-    font-weight: 300;
-    letter-spacing: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 6px;
     text-transform: uppercase;
     margin-bottom: 60px;
 }
 
-/* GALERÍA DE FOTOS PROFESIONAL */
+/* GALERÍA DE FOTOS */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    background-color: #111;
+    background-color: #000;
     aspect-ratio: 3 / 2;
 }
 
@@ -153,14 +157,12 @@ nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(20%);
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
-    pointer-events: none; /* Impide arrastrar la imagen */
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.04);
-    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 .item-overlay {
@@ -169,12 +171,12 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     opacity: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease;
 }
 
 .gallery-item:hover .item-overlay {
@@ -182,23 +184,29 @@ nav a:hover {
 }
 
 .item-overlay span {
-    font-size: 0.75rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
     letter-spacing: 2px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 4px;
 }
 
 /* APARTADO DE VIDEO */
 .video-grid {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
 .video-wrapper {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background-color: #121212;
+    background-color: #000;
+}
+
+/* Si usas YouTube/Vimeo, este código hace que el video ocupe todo el espacio bien */
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .video-placeholder {
@@ -209,83 +217,69 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    color: #444;
-    border: 1px dashed #222;
-}
-
-.video-placeholder i {
-    font-size: 2rem;
-}
-
-.video-placeholder span {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    color: #333333;
+    border: 1px solid #1a1a1a;
 }
 
 /* PIE DE PÁGINA (CONTACTO) */
 footer {
-    padding: 100px 4% 50px 4%;
-    background-color: #050505;
+    padding: 120px 6% 60px 6%;
+    background-color: #000000;
     text-align: center;
-    border-top: 1px solid #111;
+    border-top: 1px solid #111111;
 }
 
 footer h2 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
 }
 
 .contact-desc {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 50px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #888888;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 35px;
-    margin-bottom: 70px;
+    gap: 40px;
+    margin-bottom: 80px;
     flex-wrap: wrap;
 }
 
 .social-links a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #666;
+    color: #c5a880;
 }
 
 .copyright {
-    font-size: 0.65rem;
-    letter-spacing: 1px;
-    color: #333;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #444444;
     text-transform: uppercase;
-}
-
-/* ANIMACIONES */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ADAPTACIÓN PARA CELULARES */
 @media (max-width: 768px) {
-    header { padding: 20px; }
-    nav { display: none; } /* Oculta menú complejo en móvil para limpieza */
-    .hero-content h1 { font-size: 2.3rem; letter-spacing: 8px; }
-    .hero-content .tagline { font-size: 0.7rem; letter-spacing: 4px; }
-    .section { padding: 80px 20px; }
-    .section-title { margin-bottom: 40px; font-size: 1.6rem; }
+    header { padding: 30px 20px; }
+    nav { display: none; }
+    .hero-content h1 { font-size: 2.5rem; letter-spacing: 10px; text-indent: 10px; }
+    .hero-content .tagline { font-size: 1rem; }
+    .section { padding: 90px 20px; }
+    .section-title { font-size: 1.6rem; margin-bottom: 40px; }
     .gallery { grid-template-columns: 1fr; }
-    footer h2 { font-size: 1.8rem; }
-    .social-links { gap: 20px; }
+    footer h2 { font-size: 2rem; }
 }
