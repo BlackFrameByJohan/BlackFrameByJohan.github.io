@@ -1,5 +1,5 @@
 /* CONFIGURACIÓN GENERAL INTERNA */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
 
 * {
     margin: 0;
@@ -9,43 +9,44 @@
 }
 
 body {
-    background-color: #000000; /* Negro puro */
+    background-color: #050505; /* Negro puro, sobrio */
     color: #ffffff;
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Todo el sitio usará esta fuente recta */
     -webkit-user-select: none;
     user-select: none;
 }
 
-/* MENÚ SUPERIOR ELEGANTE */
+/* MENÚ SUPERIOR MINIMALISTA Y RECTO */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 40px 6%;
+    padding: 35px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 header .logo {
-    font-family: 'Cinzel', serif;
     font-weight: 700;
     letter-spacing: 4px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
 }
 
 header .logo .sublogo {
     display: block;
-    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
-    font-weight: 200;
-    letter-spacing: 5px;
-    color: #888888;
-    margin-top: 5px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: #666666;
+    margin-top: 3px;
     text-transform: uppercase;
 }
 
@@ -56,63 +57,62 @@ nav a {
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-left: 35px;
-    transition: color 0.4s ease;
-    font-weight: 400;
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 nav a:hover {
-    color: #888888; /* Cambio suave a gris al pasar el cursor */
+    color: #666666; /* Cambio a un gris sutil */
 }
 
-/* PORTADA PRINCIPAL (HERO) */
+/* PORTADA PRINCIPAL ROBUSTA (HERO) */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #000000;
+    background: #050505;
     padding: 0 20px;
 }
 
 .hero-content h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 5rem;
-    font-weight: 400;
-    letter-spacing: 20px;
-    margin-bottom: 25px;
-    text-indent: 20px;
+    font-size: 4.5rem;
+    font-weight: 900; /* Letra imponente y sólida */
+    letter-spacing: 16px;
+    margin-bottom: 15px;
+    text-indent: 16px;
+    text-transform: uppercase;
 }
 
-/* EFECTO CARTA DE INVITACIÓN / EDITORIAL */
+/* FRASE TOTALMENTE RECTA Y MINIMALISTA */
 .hero-content .tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;             /* Letra cursiva de invitación */
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    color: #ffffff;                 /* Eliminado el dorado, ahora es blanco puro */
-    margin-bottom: 55px;
+    font-size: 0.85rem;
+    letter-spacing: 6px; /* Espaciado limpio entre letras rectas */
+    color: #888888;
+    margin-bottom: 50px;
+    text-transform: uppercase;
     font-weight: 400;
-    opacity: 0.9;
 }
 
-/* BOTÓN MINIMALISTA BLANCO Y NEGRO */
+/* BOTÓN RECTO Y SÓLIDO */
 .btn-discover {
     display: inline-block;
-    padding: 16px 45px;
-    border: 1px solid #ffffff;     /* Borde blanco */
+    padding: 15px 40px;
+    border: 1px solid #ffffff;
     color: #ffffff;
     text-decoration: none;
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 4px;
-    transition: all 0.5s ease;
+    letter-spacing: 3px;
+    transition: all 0.4s ease;
     background: transparent;
+    font-weight: 500;
 }
 
 .btn-discover:hover {
-    background-color: #ffffff;     /* Al pasar el cursor se vuelve blanco entero */
-    color: #000000;                /* Y las letras negras */
+    background-color: #ffffff;
+    color: #050505;
 }
 
 /* DISEÑO DE LAS SECCIONES */
@@ -123,7 +123,7 @@ nav a:hover {
 }
 
 .bg-darker {
-    background-color: #050505;
+    background-color: #020202;
 }
 
 .section-meta {
@@ -132,13 +132,13 @@ nav a:hover {
     color: #444444;
     text-transform: uppercase;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
-    font-weight: 400;
-    letter-spacing: 6px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 5px;
     text-transform: uppercase;
     margin-bottom: 60px;
 }
@@ -161,7 +161,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: none;
 }
 
@@ -180,7 +180,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.4s ease;
 }
 
 .gallery-item:hover .item-overlay {
@@ -188,10 +188,10 @@ nav a:hover {
 }
 
 .item-overlay span {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 /* APARTADO DE VIDEO */
@@ -233,19 +233,19 @@ footer {
 }
 
 footer h2 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.8rem;
-    font-weight: 400;
+    font-size: 2.2rem;
+    font-weight: 700;
     letter-spacing: 4px;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .contact-desc {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: #666666;
-    font-size: 1.1rem;
+    color: #555555;
+    font-size: 0.9rem;
     margin-bottom: 60px;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 
 .social-links {
@@ -262,10 +262,11 @@ footer h2 {
     font-size: 0.7rem;
     letter-spacing: 3px;
     transition: color 0.3s ease;
+    font-weight: 500;
 }
 
 .social-links a:hover {
-    color: #888888;
+    color: #666666;
 }
 
 .copyright {
@@ -279,10 +280,10 @@ footer h2 {
 @media (max-width: 768px) {
     header { padding: 30px 20px; }
     nav { display: none; }
-    .hero-content h1 { font-size: 2.5rem; letter-spacing: 10px; text-indent: 10px; }
-    .hero-content .tagline { font-size: 1.1rem; }
+    .hero-content h1 { font-size: 2.3rem; letter-spacing: 8px; text-indent: 8px; }
+    .hero-content .tagline { font-size: 0.75rem; letter-spacing: 4px; }
     .section { padding: 90px 20px; }
-    .section-title { font-size: 1.6rem; margin-bottom: 40px; }
+    .section-title { font-size: 1.5rem; margin-bottom: 40px; }
     .gallery { grid-template-columns: 1fr; }
-    footer h2 { font-size: 2rem; }
+    footer h2 { font-size: 1.6rem; }
 }
