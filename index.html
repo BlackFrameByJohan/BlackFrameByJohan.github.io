@@ -110,7 +110,7 @@
         .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-        /* FOTOGRAFÍA COPTIONS Y BOTONES */
+       /* FOTOGRAFÍA COPTIONS Y BOTONES - ACTUALIZADO */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -118,7 +118,6 @@
     gap: 12px;
     margin: 30px auto 50px auto;
     padding: 0 20px;
-    /* Asegura que no se encime con menús fijos en móviles */
     position: relative;
     z-index: 10;
 }
@@ -141,28 +140,31 @@
     border-color: #fff;
 }
 
+/* Sistema Flexbox para que las fotos dicten su propia altura */
 .gallery-grid {
-    display: grid;
-    /* En móviles se pone en 1 columna, en pantallas más grandes se expande */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
+    justify-content: center;
 }
 .gallery-item {
     position: relative;
     overflow: hidden;
-    background: transparent; /* Eliminamos el fondo negro de respaldo */
+    background: transparent !important; 
     border-radius: 2px; 
     border: 1px solid rgba(255,255,255,0.03);
-    height: auto; /* Permite que el contenedor crezca con la foto */
+    flex: 1 1 300px; 
+    max-width: calc(33.333% - 14px); 
+    height: min-content !important; 
 }
 .gallery-item img {
-    width: 100%;
-    height: auto; /* La foto mantiene sus proporciones reales sin estirarse ni recortarse */
-    display: block; /* Quita espacios fantasmas debajo de la imagen */
-    object-fit: contain; 
+    width: 100% !important;
+    height: auto !important; 
+    display: block;
+    object-fit: contain !important; 
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 .gallery-item:hover img { transform: scale(1.03); }
@@ -174,25 +176,29 @@
 .gallery-item:hover .photo-meta { opacity: 1; }
 .photo-meta h4 { margin: 0; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
 
-/* REFUERZO PARA DISPOSITIVOS MÓVILES (MENÚ Y AJUSTES) */
+/* REFUERZO PARA CELULARES (MENÚ Y AJUSTES) */
 @media (max-width: 768px) {
-    /* Si tu menú superior tiene una clase o ID como 'nav', 'header' o '.navbar', 
-       este bloque asegura que se mantenga al frente de todo */
-    header, nav, .navbar {
-        z-index: 9999 !important;
+    /* Fuerza a que el menú se quede siempre arriba y visible en celulares */
+    header, nav, .navbar, #main-nav {
+        z-index: 99999 !important;
     }
     
     .filters-container {
-        margin-top: 10px; /* Evita colisiones con el menú superior plano */
+        margin-top: 10px;
         gap: 8px;
     }
     
     .filter-btn {
-        padding: 8px 16px; /* Botones ligeramente más cómodos para pantallas táctiles */
+        padding: 8px 16px;
         font-size: 0.65rem;
     }
 
-    /* Muestra la información de la foto fija en móviles ya que el 'hover' no existe en pantallas táctiles */
+    .gallery-item {
+        max-width: 100% !important;
+        flex: 1 1 100%;
+    }
+
+    /* En celulares muestra los títulos fijos para que no dependan del hover del mouse */
     .photo-meta {
         opacity: 1;
         background: linear-gradient(transparent, rgba(0,0,0,0.7));
