@@ -67,7 +67,7 @@
         .hero h1 { font-size: 3.5rem; letter-spacing: 8px; margin-bottom: 10px; font-weight: 900; }
         .tagline { font-size: 0.9rem; letter-spacing: 6px; color: #888; text-transform: uppercase; margin-bottom: 40px; }
 
-        /* CLÁUSULA DE PROPIEDAD DE CLIENTES EN PORTADA */
+        /* CLÁUSULA DE PROPIEDAD EN PORTADA */
         .legal-notice-box {
             max-width: 680px;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -86,9 +86,7 @@
             font-weight: 400;
         }
 
-        /* ==========================================================================
-           SECCIÓN SOBRE MÍ (BIO PROFESIONAL)
-           ========================================================================== */
+        /* SOBRE MÍ */
         .about-container {
             display: flex;
             flex-wrap: wrap;
@@ -106,40 +104,13 @@
             aspect-ratio: 3 / 4;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .about-text {
-            flex: 2 1 450px;
-        }
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 900;
-        }
-        .about-text h3 {
-            font-size: 0.85rem;
-            color: #cc0000;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-        .about-text p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #bcbcbc;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; }
+        .about-text { flex: 2 1 450px; }
+        .about-text h2 { font-size: 2.5rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 3px; font-weight: 900; }
+        .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
+        .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-        /* ==========================================================================
-           SECCIÓN FOTOGRAFÍA CON FILTROS
-           ========================================================================== */
+        /* FOTOGRAFÍA COPTIONS Y BOTONES */
         .filters-container {
             display: flex;
             justify-content: center;
@@ -174,7 +145,6 @@
             max-width: 1200px; 
             margin: 0 auto;
             padding: 0 20px;
-            transition: all 0.5s ease;
         }
         .gallery-item {
             position: relative;
@@ -190,26 +160,17 @@
             object-fit: cover;
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        .gallery-item:hover img {
-            transform: scale(1.03);
-        }
-
+        .gallery-item:hover img { transform: scale(1.03); }
         .photo-meta {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease;
         }
         .gallery-item:hover .photo-meta { opacity: 1; }
         .photo-meta h4 { margin: 0; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
 
         /* ==========================================================================
-           DISTRIBUCIÓN DE VIDEOS
+           CONTENEDORES DE VIDEO Y ESCUDOS ANTI-COMPARTIR / ANTI-CANAL
            ========================================================================== */
         .video-grid {
             display: grid;
@@ -221,20 +182,6 @@
         }
         @media (max-width: 768px) { .video-grid { grid-template-columns: 1fr; } }
 
-        .video-wrapper {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-bottom: 56.25%; 
-            background: #000;
-        }
-        .video-wrapper-vertical {
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-bottom: 177.77%; 
-            background: #000;
-        }
         .shorts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -245,27 +192,36 @@
         }
         @media (max-width: 768px) { .shorts-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
 
-        .video-wrapper iframe, .video-wrapper-vertical iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        .video-container-box {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        .ratio-horizontal { padding-bottom: 56.25%; } /* 16:9 */
+        .ratio-vertical { padding-bottom: 177.77%; }  /* 9:16 Shorts */
+
+        .video-container-box iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* Capas de protección antishare e interacción directa */
+        /* CAPAS DE PROTECCIÓN TOTAL DE INTERACCIÓN (ESCUDOS) */
         .video-click-capture {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;
         }
-        .top-left-shield {
-            position: absolute; top: 0; left: 0; width: 75%; height: 55px; z-index: 15;
+        .shield-top {
+            position: absolute; top: 0; left: 0; width: 100%; height: 60px; z-index: 12; background: transparent;
         }
-        .bottom-full-shield {
-            position: absolute; bottom: 0; right: 0; width: 45%; height: 50px; z-index: 15;
+        .shield-bottom-right {
+            position: absolute; bottom: 0; right: 0; width: 30%; height: 45px; z-index: 12; background: transparent;
+        }
+        .shield-bottom-left {
+            position: absolute; bottom: 0; left: 0; width: 15%; height: 45px; z-index: 12; background: transparent;
         }
 
         footer {
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            background: #020202;
+            padding: 80px 20px; text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
         }
     </style>
 </head>
@@ -285,31 +241,27 @@
         <div class="hero-content">
             <h1>BLACK FRAME</h1>
             <p class="tagline">CINEMATOGRAPHY & PHOTOGRAPHY</p>
-            
-            <!-- PORTADA CON TEXTO DE PROPIEDAD DEL MATERIAL -->
             <div class="legal-notice-box">
                 <p>Las fotografías y videos expuestos en este sitio web se comparten con el único propósito de integrar mi portafolio profesional y exhibir la calidad de mi trabajo técnico. Los derechos de propiedad intelectual, autoría final y uso de este material pertenecen de forma exclusiva a las marcas, empresas y personas que contrataron mis servicios para su realización.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: SOBRE MÍ -->
     <section id="about" style="background-color: #080808;">
         <div class="about-container">
             <div class="about-image">
-                <img src="images/perfil.jpg" alt="JohanTG - Cinematographer" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000'">
+                <img src="images/perfil.jpg" alt="JohanTG" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000'">
             </div>
             <div class="about-text">
                 <h2>JohanTG</h2>
                 <h3>Director de Fotografía & Realizador Audiovisual</h3>
                 <p>Desde el año 2017 me he dedicado a la creación de contenido visual de alto impacto, especializándome en la dirección de fotografía, cinematografía comercial y narrativa documental.</p>
                 <p>Mi enfoque se centra en capturar la esencia de cada historia a través de un manejo meticuloso de la luz, encuadres precisos y movimientos de cámara dinámicos que elevan el valor de producción de cada obra.</p>
-                <p>A lo largo de mi trayectoria, he desarrollado proyectos de videoclips musicales, campañas comerciales e institucionales, manteniendo siempre una estética limpia, elegant e y con una fuerza visual de carácter cinematográfico.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN FOTOGRAFÍA CON CATEGORÍAS FILTRABLES -->
+    <!-- SECCIÓN FOTOGRAFÍA CON 10 ESPACIOS POR CATEGORÍA -->
     <section id="photography" style="padding: 80px 0; background: #050505;">
         <p style="text-align: center; color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">01 / PORTAFOLIO FIJO</p>
         <h2 style="text-align: center; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; font-weight: 800;">Fotografía</h2>
@@ -324,50 +276,82 @@
 
         <div class="gallery-grid" id="photo-gallery">
             
-            <!-- BODAS & PAREJAS (Aquí puedes pegar tus URLs) -->
+            <!-- ================= BODAS & PAREJAS (1 a 10) ================= -->
             <div class="gallery-item photo-item bodas">
                 <img src="images/boda1.jpg" alt="Bodas" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600'">
-                <div class="photo-meta"><h4>Bodas & Parejas</h4></div>
+                <div class="photo-meta"><h4>Bodas & Parejas — 01</h4></div>
             </div>
             <div class="gallery-item photo-item bodas">
                 <img src="images/boda2.jpg" alt="Bodas" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600'">
-                <div class="photo-meta"><h4>Bodas & Parejas</h4></div>
+                <div class="photo-meta"><h4>Bodas & Parejas — 02</h4></div>
             </div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda3.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 03</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda4.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 04</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda5.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 05</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda6.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 06</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda7.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 07</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda8.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 08</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda9.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 09</h4></div></div>
+            <div class="gallery-item photo-item bodas"><img src="images/boda10.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas — 10</h4></div></div>
 
-            <!-- RETRATOS & MODELOS -->
+            <!-- ================= RETRATOS & MODELOS (1 a 10) ================= -->
             <div class="gallery-item photo-item retratos">
                 <img src="images/retrato1.jpg" alt="Retratos" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600'">
-                <div class="photo-meta"><h4>Retratos & Modelos</h4></div>
+                <div class="photo-meta"><h4>Retratos & Modelos — 01</h4></div>
             </div>
             <div class="gallery-item photo-item retratos">
                 <img src="images/retrato2.jpg" alt="Retratos" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=600'">
-                <div class="photo-meta"><h4>Retratos & Modelos</h4></div>
+                <div class="photo-meta"><h4>Retratos & Modelos — 02</h4></div>
             </div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato3.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 03</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato4.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 04</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato5.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 05</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato6.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 06</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato7.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 07</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato8.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 08</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato9.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 09</h4></div></div>
+            <div class="gallery-item photo-item retratos"><img src="images/retrato10.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos — 10</h4></div></div>
 
-            <!-- PRODUCTO & COMIDA -->
+            <!-- ================= PRODUCTO & GASTRO (1 a 10) ================= -->
             <div class="gallery-item photo-item producto">
                 <img src="images/producto1.jpg" alt="Producto" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600'">
-                <div class="photo-meta"><h4>Producto & Gastronomía</h4></div>
+                <div class="photo-meta"><h4>Producto & Gastronomía — 01</h4></div>
             </div>
             <div class="gallery-item photo-item producto">
                 <img src="images/comida1.jpg" alt="Comida" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600'">
-                <div class="photo-meta"><h4>Producto & Gastronomía</h4></div>
+                <div class="photo-meta"><h4>Producto & Gastronomía — 02</h4></div>
             </div>
+            <div class="gallery-item photo-item producto"><img src="images/producto3.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 03</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto4.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 04</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto5.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 05</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto6.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 06</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto7.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 07</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto8.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 08</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto9.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 09</h4></div></div>
+            <div class="gallery-item photo-item producto"><img src="images/producto10.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía — 10</h4></div></div>
 
-            <!-- ESTRUCTURAS & ARQUITECTURA -->
+            <!-- ================= ARQUITECTURA & ESPECTÁCULOS (1 a 10) ================= -->
             <div class="gallery-item photo-item arquitectura">
                 <img src="images/arquitectura1.jpg" alt="Arquitectura" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600'">
-                <div class="photo-meta"><h4>Estructuras & Arquitectura</h4></div>
+                <div class="photo-meta"><h4>Estructuras & Arquitectura — 01</h4></div>
             </div>
             <div class="gallery-item photo-item arquitectura">
                 <img src="images/arquitectura2.jpg" alt="Arquitectura" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600'">
-                <div class="photo-meta"><h4>Estructuras & Arquitectura</h4></div>
+                <div class="photo-meta"><h4>Estructuras & Arquitectura — 02</h4></div>
             </div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura3.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 03</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura4.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 04</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura5.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 05</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura6.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 06</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura7.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 07</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura8.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 08</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura9.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 09</h4></div></div>
+            <div class="gallery-item photo-item arquitectura"><img src="images/arquitectura10.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Arquitectura — 10</h4></div></div>
 
         </div>
     </section>
 
-    <!-- SECCIÓN VIDEOS (INTACTA) -->
+    <!-- SECCIÓN VIDEOS CON BLOQUEOS COMPLETOS DE PRIVACIDAD -->
     <section id="videography" style="padding: 80px 0; background: #080808;">
         <p style="text-align: center; color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">02 / TRABAJOS AUDIOVISUALES</p>
         <h2 style="text-align: center; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; font-weight: 800; margin-bottom: 35px;">Videos</h2>
@@ -381,8 +365,8 @@
         <div class="video-grid" id="horizontal-list">
             <!-- ABUELA MAGDA SHORT (2026) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(0)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/HVGgs5dgP9c?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=HVGgs5dgP9c&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -390,8 +374,8 @@
             </div>
             <!-- AIRBNB QUINTA VELÁSTEGUI (2026) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(1)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/YJgOG2JXcrQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YJgOG2JXcrQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -399,8 +383,8 @@
             </div>
             <!-- ABUELA MAGDA LONG (2026) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(2)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/C_zOqY6zUBg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=C_zOqY6zUBg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -408,8 +392,8 @@
             </div>
             <!-- BARRACUDA (2025) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/N_yBIGzQ5ZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=N_yBIGzQ5ZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -417,8 +401,8 @@
             </div>
             <!-- CHARCUTERO LEÑADOR (2025) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(4)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -426,8 +410,8 @@
             </div>
             <!-- LUMINACYCLE (2025) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(5)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -435,8 +419,8 @@
             </div>
             <!-- VENTE ANGIELLA (2024) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(6)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -444,16 +428,17 @@
             </div>
             <!-- TOWERS ANT (2024) -->
             <div class="video-item">
-                <div class="video-wrapper">
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(7)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2024</p></div>
             </div>
             <!-- LAMA GLAMA (2023) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(8)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -461,24 +446,26 @@
             </div>
             <!-- SIEMPRE ME HACES FALTA (2023) -->
             <div class="video-item">
-                <div class="video-wrapper">
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(9)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2023</p></div>
             </div>
             <!-- TE PASO A BUSCAR (2022) -->
             <div class="video-item">
-                <div class="video-wrapper">
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(10)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2022</p></div>
             </div>
             <!-- REDSKINS (2022) -->
             <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(11)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -486,9 +473,10 @@
             </div>
             <!-- DEMONIA (2021) -->
             <div class="video-item">
-                <div class="video-wrapper">
+                <div class="video-container-box ratio-horizontal">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(12)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media; fullscreen"></iframe>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2021</p></div>
             </div>
@@ -496,12 +484,12 @@
 
         <div style="height: 50px;"></div>
 
-        <!-- VIDEOS VERTICALES SHORTS -->
+        <!-- VIDEOS VERTICALES (SHORTS) CON MISMOS ESCUDOS -->
         <div class="shorts-grid" id="vertical-list">
             <!-- WHISKY LEGACY -->
             <div class="video-item">
-                <div class="video-wrapper-vertical">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-vertical">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(13)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/o72JLfRYj1Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=o72JLfRYj1Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -509,8 +497,8 @@
             </div>
             <!-- KAFFA SAN VALENTÍN -->
             <div class="video-item">
-                <div class="video-wrapper-vertical">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-vertical">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(14)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/Yreqm3Q057Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Yreqm3Q057Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -518,8 +506,8 @@
             </div>
             <!-- KAFFA DÍA DE LA MADRE -->
             <div class="video-item">
-                <div class="video-wrapper-vertical">
-                    <div class="top-left-shield"></div><div class="bottom-full-shield"></div>
+                <div class="video-container-box ratio-vertical">
+                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(15)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/z9sGg_2t29Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=z9sGg_2t29Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
@@ -532,7 +520,6 @@
         <div class="contact-content">
             <p style="color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">03 / CONECTAR</p>
             <h2 style="font-size: 2rem; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">Creemos algo juntos.</h2>
-            <p style="color:#888; font-size:0.95rem; margin-bottom: 30px;">Disponible para proyectos comerciales y artísticos.</p>
             <div class="social-links" style="margin: 30px 0;">
                 <a href="https://www.instagram.com/_johan_tg/" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-instagram"></i> INSTAGRAM</a>
                 <a href="https://wa.me/5930983838908" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
@@ -542,43 +529,26 @@
         </div>
     </footer>
 
-    <!-- MOTORES LOGICOS DE FILTROS Y REPRODUCTOR YOUTUBE -->
+    <!-- LÓGICA DE FILTROS Y REPRODUCTORES -->
     <script>
         function filterPhotos(category) {
             document.querySelectorAll('#photography .filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
             const items = document.querySelectorAll('.photo-item');
             items.forEach(item => {
-                if (category === 'all-p') {
-                    item.style.display = 'block';
-                } else {
-                    if (item.classList.contains(category)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                }
+                if (category === 'all-p') { item.style.display = 'block'; }
+                else { item.style.display = item.classList.contains(category) ? 'block' : 'none'; }
             });
         }
 
         function filterVideos(type) {
             document.querySelectorAll('#videography .filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-
             const horizontals = document.getElementById('horizontal-list');
             const verticals = document.getElementById('vertical-list');
-
-            if (type === 'all') {
-                horizontals.style.display = 'grid';
-                verticals.style.display = 'grid';
-            } else if (type === 'horizontal') {
-                horizontals.style.display = 'grid';
-                verticals.style.display = 'none';
-            } else if (type === 'vertical') {
-                horizontals.style.display = 'none';
-                verticals.style.display = 'grid';
-            }
+            if (type === 'all') { horizontals.style.display = 'grid'; verticals.style.display = 'grid'; }
+            else if (type === 'horizontal') { horizontals.style.display = 'grid'; verticals.style.display = 'none'; }
+            else if (type === 'vertical') { horizontals.style.display = 'none'; verticals.style.display = 'grid'; }
         }
 
         var tag = document.createElement('script');
@@ -594,10 +564,7 @@
                 iframe.id = 'player-' + index;
                 players.push(new YT.Player(iframe.id, {
                     events: {
-                        'onReady': function(event) {
-                            event.target.mute(); 
-                            event.target.playVideo();
-                        }
+                        'onReady': function(event) { event.target.mute(); event.target.playVideo(); }
                     }
                 }));
             });
@@ -607,18 +574,15 @@
             players.forEach(function(player, index) {
                 if (player && typeof player.mute === 'function') { player.mute(); }
                 var captures = document.querySelectorAll('.video-click-capture');
-                if (index !== activeIndex && captures[index]) {
-                    captures[index].style.pointerEvents = 'auto';
-                }
+                if (index !== activeIndex && captures[index]) { captures[index].style.pointerEvents = 'auto'; }
             });
 
             var targetPlayer = players[activeIndex];
             if (targetPlayer && typeof targetPlayer.unMute === 'function') {
                 targetPlayer.unMute();
-                targetPlayer.setVolume(85); 
+                targetPlayer.setVolume(85);
                 targetPlayer.playVideo();
             }
-
             var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
             if (currentCapture) { currentCapture.style.pointerEvents = 'none'; }
         }
