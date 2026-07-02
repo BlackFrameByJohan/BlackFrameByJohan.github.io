@@ -53,16 +53,38 @@
         }
         nav a:hover { color: #fff; }
 
+        /* HERO Y PORTADA */
         .hero {
-            height: 60vh;
+            height: 75vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), #050505), url('images/hero-bg.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.6), #050505), url('images/hero-bg.jpg') center/cover no-repeat;
+            padding: 0 20px;
         }
         .hero h1 { font-size: 3.5rem; letter-spacing: 8px; margin-bottom: 10px; font-weight: 900; }
-        .tagline { font-size: 0.9rem; letter-spacing: 6px; color: #888; text-transform: uppercase; }
+        .tagline { font-size: 0.9rem; letter-spacing: 6px; color: #888; text-transform: uppercase; margin-bottom: 40px; }
+
+        /* CLÁUSULA DE PROPIEDAD DE CLIENTES EN PORTADA */
+        .legal-notice-box {
+            max-width: 680px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 22px 15px;
+            margin-top: 20px;
+            background: rgba(255,255,255,0.01);
+        }
+        .legal-notice-box p {
+            font-size: 0.72rem;
+            line-height: 1.8;
+            color: #777;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 400;
+        }
 
         /* ==========================================================================
            SECCIÓN SOBRE MÍ (BIO PROFESIONAL)
@@ -172,7 +194,6 @@
             transform: scale(1.03);
         }
 
-        /* Pie de foto sutil de galería */
         .photo-meta {
             position: absolute;
             bottom: 0;
@@ -229,7 +250,7 @@
             top: 0; left: 0; width: 100%; height: 100%; border: 0;
         }
 
-        /* Capas de protección */
+        /* Capas de protección antishare e interacción directa */
         .video-click-capture {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: pointer;
         }
@@ -264,14 +285,18 @@
         <div class="hero-content">
             <h1>BLACK FRAME</h1>
             <p class="tagline">CINEMATOGRAPHY & PHOTOGRAPHY</p>
+            
+            <!-- PORTADA CON TEXTO DE PROPIEDAD DEL MATERIAL -->
+            <div class="legal-notice-box">
+                <p>Las fotografías y videos expuestos en este sitio web se comparten con el único propósito de integrar mi portafolio profesional y exhibir la calidad de mi trabajo técnico. Los derechos de propiedad intelectual, autoría final y uso de este material pertenecen de forma exclusiva a las marcas, empresas y personas que contrataron mis servicios para su realización.</p>
+            </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: SOBRE MÍ (DESCRIPCIÓN PROFESIONAL AUDIOVISUAL) -->
+    <!-- SECCIÓN: SOBRE MÍ -->
     <section id="about" style="background-color: #080808;">
         <div class="about-container">
             <div class="about-image">
-                <!-- AQUÍ CAMBIAS TU FOTO DE PERFIL -->
                 <img src="images/perfil.jpg" alt="JohanTG - Cinematographer" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000'">
             </div>
             <div class="about-text">
@@ -279,7 +304,7 @@
                 <h3>Director de Fotografía & Realizador Audiovisual</h3>
                 <p>Desde el año 2017 me he dedicado a la creación de contenido visual de alto impacto, especializándome en la dirección de fotografía, cinematografía comercial y narrativa documental.</p>
                 <p>Mi enfoque se centra en capturar la esencia de cada historia a través de un manejo meticuloso de la luz, encuadres precisos y movimientos de cámara dinámicos que elevan el valor de producción de cada obra.</p>
-                <p>A lo largo de mi trayectoria, he desarrollado proyectos de videoclips musicales, campañas comerciales e institucionales, manteniendo siempre una estética limpia, elegante y con una fuerza visual de carácter cinematográfico.</p>
+                <p>A lo largo de mi trayectoria, he desarrollado proyectos de videoclips musicales, campañas comerciales e institucionales, manteniendo siempre una estética limpia, elegant e y con una fuerza visual de carácter cinematográfico.</p>
             </div>
         </div>
     </section>
@@ -289,7 +314,6 @@
         <p style="text-align: center; color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">01 / PORTAFOLIO FIJO</p>
         <h2 style="text-align: center; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; font-weight: 800;">Fotografía</h2>
         
-        <!-- FILTROS DE FOTOGRAFÍA -->
         <div class="filters-container">
             <button class="filter-btn active" onclick="filterPhotos('all-p')">Ver Todo</button>
             <button class="filter-btn" onclick="filterPhotos('bodas')">Bodas & Parejas</button>
@@ -298,10 +322,9 @@
             <button class="filter-btn" onclick="filterPhotos('arquitectura')">Estructuras & Arquitectura</button>
         </div>
 
-        <!-- GRILLA DE FOTOS (Cambia las rutas por tus fotos reales) -->
         <div class="gallery-grid" id="photo-gallery">
             
-            <!-- BODAS & PAREJAS -->
+            <!-- BODAS & PAREJAS (Aquí puedes pegar tus URLs) -->
             <div class="gallery-item photo-item bodas">
                 <img src="images/boda1.jpg" alt="Bodas" draggable="false" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600'">
                 <div class="photo-meta"><h4>Bodas & Parejas</h4></div>
@@ -344,18 +367,17 @@
         </div>
     </section>
 
-    <!-- SECCIÓN VIDEOS (SE MANTIENE INTACTO TU HISTORIAL CRONOLÓGICO) -->
+    <!-- SECCIÓN VIDEOS (INTACTA) -->
     <section id="videography" style="padding: 80px 0; background: #080808;">
         <p style="text-align: center; color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">02 / TRABAJOS AUDIOVISUALES</p>
         <h2 style="text-align: center; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; font-weight: 800; margin-bottom: 35px;">Videos</h2>
 
-        <div class="video-filters">
+        <div class="video-filters" style="display: flex; justify-content: center; gap: 12px; margin-bottom: 45px;">
             <button class="filter-btn active" onclick="filterVideos('all')">TODOS</button>
             <button class="filter-btn" onclick="filterVideos('horizontal')">HORIZONTALES</button>
             <button class="filter-btn" onclick="filterVideos('vertical')">VERTICALES</button>
         </div>
 
-        <!-- VIDEOS HORIZONTALES -->
         <div class="video-grid" id="horizontal-list">
             <!-- ABUELA MAGDA SHORT (2026) -->
             <div class="video-item">
@@ -520,17 +542,12 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-
     <!-- MOTORES LOGICOS DE FILTROS Y REPRODUCTOR YOUTUBE -->
     <script>
-        // FILTROS PARA SECCIÓN FOTOGRAFÍA
         function filterPhotos(category) {
-            // Activar botón
             document.querySelectorAll('#photography .filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Filtrar elementos
             const items = document.querySelectorAll('.photo-item');
             items.forEach(item => {
                 if (category === 'all-p') {
@@ -545,7 +562,6 @@
             });
         }
 
-        // FILTROS PARA SECCIÓN VIDEO
         function filterVideos(type) {
             document.querySelectorAll('#videography .filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
@@ -565,7 +581,6 @@
             }
         }
 
-        // CONTROLADOR DE REPRODUCTORES API YOUTUBE
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
