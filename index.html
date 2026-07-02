@@ -1,9 +1,196 @@
-<!-- GRID DE VIDEOS HORIZONTALES (Orden Corregido y Limpio) -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Frame by JohanTG | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           SECCIÓN FOTOGRAFÍA: FOTOS MÁS PEQUEÑAS Y 100% BLOQUEADAS
+           ========================================================================== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 25px;
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            border-radius: 4px; 
+            aspect-ratio: 1 / 1; 
+            -webkit-user-select: none;
+            user-select: none;
+            pointer-events: none; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.9); 
+        }
+
+        .gallery:hover .gallery-item img {
+            filter: brightness(1);
+        }
+
+        /* ==========================================================================
+           SISTEMA DE SEGURIDAD (SOLO PARA VIDEOS CORPORATIVOS/MARCAS/DOCUMENTALES)
+           ========================================================================== */
+        .video-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 56.25%; 
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Capa invisible para detectar el primer clic */
+        .video-click-capture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: pointer;
+            background: rgba(0,0,0,0);
+        }
+
+        /* ESCUDO SUPERIOR IZQUIERDO: Bloquea accesos no deseados */
+        .top-left-shield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 75%; 
+            height: 55px; 
+            z-index: 15;
+            background: rgba(0,0,0,0);
+            pointer-events: auto; 
+        }
+
+        /* ESCUDO INFERIOR DERECHO SEGURO: Bloquea ampliación y logo de YT */
+        .bottom-full-shield {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 45%; 
+            height: 50px; 
+            z-index: 15;
+            background: rgba(0,0,0,0);
+            pointer-events: auto; 
+        }
+
+        /* ==========================================================================
+           ESTRUCTURA PROFESIONAL PARA SHORTS (9:16)
+           ========================================================================== */
+        .shorts-section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin: 60px 0 30px 0;
+            text-align: left;
+            border-bottom: 1px solid #222;
+            padding-bottom: 15px;
+        }
+
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .shorts-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .short-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 177.77%; /* Proporción matemática 9:16 exacta */
+            background: #000;
+            border-radius: 6px;
+        }
+
+        .short-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <header>
+        <div class="logo">BLACK FRAME<span class="sublogo">by JohanTG</span></div>
+        <nav>
+            <a href="#photography">Fotografía</a>
+            <a href="#videography">Video</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BLACK FRAME</h1>
+            <p class="tagline">FOTOGRAFÍA & VIDEO </p>
+            <a href="#photography" class="btn-discover">Descubrir Portafolio</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FOTOGRAFÍA -->
+    <section id="photography" class="section">
+        <p class="section-meta">01 / PORTAFOLIO</p>
+        <h2 class="section-title">Fotografía</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN VIDEOS -->
+    <section id="videography" class="section bg-darker">
+        <p class="section-meta">02 / TRABAJOS audiovisuales</p>
+        <h2 class="section-title">Videos</h2>
+        
+        <!-- GRID DE VIDEOS HORIZONTALES -->
         <div class="video-grid">
 
-            <!-- ==================== AÑO 2026 ==================== -->
-            
-            <!-- 1. ABUELA MAGDA LONG (Va primero) -->
+            <!-- 1. ABUELA MAGDA - LONG CLIP (2026) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -12,12 +199,12 @@
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/N_yBIGzQ5ZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=N_yBIGzQ5ZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
-                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Abuela Magda Long</h3>
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">ABUELA MAGDA - LONG CLIP</h3>
                     <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO PROYECTO — 2026</p>
                 </div>
             </div>
 
-            <!-- 2. ABUELA MAGDA SHORT CLIP (Va segundo, después del Long) -->
+            <!-- 2. ABUELA MAGDA - SHORT CLIP (2026) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -26,12 +213,12 @@
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/YJgOG2JXcrQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YJgOG2JXcrQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
-                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Abuela magda short clip</h3>
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">ABUELA MAGDA - SHORT CLIP</h3>
                     <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO PROYECTO — 2026</p>
                 </div>
             </div>
 
-            <!-- 3. AIRBNB QUINTA VELÁSTEGUI (Va luego de los dos de Abuela Magda) -->
+            <!-- 3. AIRBNB - QUINTA VELÁSTEGUI (2026) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -40,19 +227,31 @@
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/HVGgs5dgP9c?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=HVGgs5dgP9c&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
-                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Airbnb quinta Velástegui</h3>
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">AIRBNB - QUINTA VELÁSTEGUI</h3>
                     <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO COMERCIAL — 2026</p>
                 </div>
             </div>
 
-            <!-- ==================== AÑO 2025 ==================== -->
-
-            <!-- 4. CHARCUTERO LEÑADOR -->
+            <!-- 4. PROYECTO AUDIOVISUAL ADICIONAL (2026) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
                     <div class="bottom-full-shield"></div>
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/C_zOqY6zUBg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=C_zOqY6zUBg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: left;">
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">PROYECTO AUDIOVISUAL ADICIONAL</h3>
+                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2026</p>
+                </div>
+            </div>
+            
+            <!-- 5. EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR (2025) -->
+            <div class="video-item">
+                <div class="video-wrapper">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(4)"></div>
                     <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: left;">
@@ -61,21 +260,7 @@
                 </div>
             </div>
 
-            <!-- 5. BARRACUDA (Va después de Charcutero Leñador) -->
-            <div class="video-item">
-                <div class="video-wrapper">
-                    <div class="top-left-shield"></div>
-                    <div class="bottom-full-shield"></div>
-                    <div class="video-click-capture" onclick="focusVideo(4)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/C_zOqY6zUBg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=C_zOqY6zUBg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
-                </div>
-                <div class="video-info" style="margin-top: 15px; text-align: left;">
-                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">BARRACUDA</h3>
-                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2025</p>
-                </div>
-            </div>
-
-            <!-- 6. LUMINACYCLE -->
+            <!-- 6. LUMINACYCLE - PRODUCTO DE DISEÑO (2025) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -89,9 +274,7 @@
                 </div>
             </div>
 
-            <!-- ==================== HISTÓRICOS (RESTO SE QUEDA NORMAL) ==================== -->
-
-            <!-- 7. VENTE ANGIELLA -->
+            <!-- 7. VENTE ANGIELLA (2024) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -105,7 +288,7 @@
                 </div>
             </div>
 
-            <!-- 8. TOWERS ANT - HACE TIEMPO NO TE VEO -->
+            <!-- 8. TOWERS ANT - HACE TIEMPO NO TE VEO (2024) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(7)"></div>
@@ -117,7 +300,7 @@
                 </div>
             </div>
 
-            <!-- 9. LAMA GLAMA -->
+            <!-- 9. LAMA GLAMA - ENTREVISTA (2023) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -131,7 +314,7 @@
                 </div>
             </div>
 
-            <!-- 10. SIEMPRE ME HACES FALTA KEOFF OFICIAL -->
+            <!-- 10. SIEMPRE ME HACES FALTA KEOFF OFICIAL (2023) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(9)"></div>
@@ -143,7 +326,7 @@
                 </div>
             </div>
 
-            <!-- 11. TOWERS ANT - TE PASO A BUSCAR -->
+            <!-- 11. TOWERS ANT - TE PASO A BUSCAR (2022) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(10)"></div>
@@ -155,7 +338,7 @@
                 </div>
             </div>
 
-            <!-- 12. REDSKINS -->
+            <!-- 12. REDSKINS (2022) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -169,7 +352,7 @@
                 </div>
             </div>
 
-            <!-- 13. DENNISBBY ft TOWERS ANT - DEMONIA -->
+            <!-- 13. DENNISBBY ft TOWERS ANT - DEMONIA (2021) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(12)"></div>
@@ -180,5 +363,122 @@
                     <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO OFICIAL — 2021</p>
                 </div>
             </div>
+        </div>
+
+        <!-- SUBSECCIÓN PROFESIONAL: SHORTS Y CONTENIDO VERTICAL -->
+        <div class="shorts-section-title">Vertical Reels & Shorts</div>
+        <div class="shorts-grid">
+
+            <!-- 14. CREATIVE SHORT I (2026) -->
+            <div class="video-item">
+                <div class="short-wrapper">
+                    <div class="top-left-shield" style="width: 85%; height: 60px;"></div>
+                    <div class="bottom-full-shield" style="width: 55%; height: 60px;"></div>
+                    <div class="video-click-capture" onclick="focusVideo(13)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/o72JLfRYj1Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=o72JLfRYj1Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 12px; text-align: left;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">CREATIVE SHORT I</h3>
+                    <p style="font-size: 0.65rem; color: #555555;">REEL — 2026</p>
+                </div>
+            </div>
+
+            <!-- 15. CREATIVE SHORT II (2026) -->
+            <div class="video-item">
+                <div class="short-wrapper">
+                    <div class="top-left-shield" style="width: 85%; height: 60px;"></div>
+                    <div class="bottom-full-shield" style="width: 55%; height: 60px;"></div>
+                    <div class="video-click-capture" onclick="focusVideo(14)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Yreqm3Q057Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Yreqm3Q057Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 12px; text-align: left;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">CREATIVE SHORT II</h3>
+                    <p style="font-size: 0.65rem; color: #555555;">REEL — 2026</p>
+                </div>
+            </div>
+
+            <!-- 16. CREATIVE SHORT III (2026) -->
+            <div class="video-item">
+                <div class="short-wrapper">
+                    <div class="top-left-shield" style="width: 85%; height: 60px;"></div>
+                    <div class="bottom-full-shield" style="width: 55%; height: 60px;"></div>
+                    <div class="video-click-capture" onclick="focusVideo(15)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/z9sGg_2t29Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=z9sGg_2t29Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 12px; text-align: left;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;">CREATIVE SHORT III</h3>
+                    <p style="font-size: 0.65rem; color: #555555;">REEL — 2026</p>
+                </div>
+            </div>
 
         </div>
+    </section>
+
+    <footer id="contact">
+        <div class="contact-content">
+            <p class="section-meta">03 / CONECTAR</p>
+            <h2>Creemos algo juntos.</h2>
+            <p class="contact-desc">Disponible para proyectos locales e internacionales.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/_johan_tg/" target="_blank"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                <a href="https://wa.me/5930983838908" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+                <a href="mailto:johantg2019@gmail.com"><i class="fas fa-envelope"></i> EMAIL</a>
+            </div>
+            <p class="copyright">&copy; 2026 BLACK FRAME. Todos los derechos reservados. Prohibida la reproducción de imágenes.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- MOTOR LÓGICO MULTIPLAYER (SISTEMA TOTAL 16 VIDEOS MUTEO CRUZADO) -->
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var players = [];
+
+        function onYouTubeIframeAPIReady() {
+            var iframes = document.querySelectorAll('.portfolio-video');
+            iframes.forEach(function(iframe, index) {
+                iframe.id = 'player-' + index;
+                players.push(new YT.Player(iframe.id, {
+                    events: {
+                        'onReady': function(event) {
+                            event.target.mute(); 
+                            event.target.playVideo();
+                        }
+                    }
+                }));
+            });
+        }
+
+        function focusVideo(activeIndex) {
+            players.forEach(function(player, index) {
+                if (player && typeof player.mute === 'function') {
+                    player.mute();
+                }
+                var captures = document.querySelectorAll('.video-click-capture');
+                if (index !== activeIndex) {
+                    if (captures[index]) {
+                        captures[index].style.pointerEvents = 'auto';
+                    }
+                }
+            });
+
+            var targetPlayer = players[activeIndex];
+            if (targetPlayer && typeof targetPlayer.unMute === 'function') {
+                targetPlayer.unMute();
+                targetPlayer.setVolume(85); 
+                targetPlayer.playVideo();
+            }
+
+            var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
+            if (currentCapture) {
+                currentCapture.style.pointerEvents = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
