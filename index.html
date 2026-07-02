@@ -111,63 +111,94 @@
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
         /* FOTOGRAFÍA COPTIONS Y BOTONES */
-        .filters-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 30px auto 50px auto;
-            padding: 0 20px;
-        }
-        .filter-btn {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: #888;
-            padding: 10px 24px;
-            border-radius: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
+.filters-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px auto 50px auto;
+    padding: 0 20px;
+    /* Asegura que no se encime con menús fijos en móviles */
+    position: relative;
+    z-index: 10;
+}
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #888;
+    padding: 10px 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.filter-btn:hover, .filter-btn.active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 20px;
-            max-width: 1200px; 
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            background: #000;
-            border-radius: 2px; 
-            aspect-ratio: 4 / 5; 
-            border: 1px solid rgba(255,255,255,0.03);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .gallery-item:hover img { transform: scale(1.03); }
-        .photo-meta {
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.85));
-            box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease;
-        }
-        .gallery-item:hover .photo-meta { opacity: 1; }
-        .photo-meta h4 { margin: 0; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+.gallery-grid {
+    display: grid;
+    /* En móviles se pone en 1 columna, en pantallas más grandes se expande */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: transparent; /* Eliminamos el fondo negro de respaldo */
+    border-radius: 2px; 
+    border: 1px solid rgba(255,255,255,0.03);
+    height: auto; /* Permite que el contenedor crezca con la foto */
+}
+.gallery-item img {
+    width: 100%;
+    height: auto; /* La foto mantiene sus proporciones reales sin estirarse ni recortarse */
+    display: block; /* Quita espacios fantasmas debajo de la imagen */
+    object-fit: contain; 
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.gallery-item:hover img { transform: scale(1.03); }
+.photo-meta {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease;
+}
+.gallery-item:hover .photo-meta { opacity: 1; }
+.photo-meta h4 { margin: 0; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+
+/* REFUERZO PARA DISPOSITIVOS MÓVILES (MENÚ Y AJUSTES) */
+@media (max-width: 768px) {
+    /* Si tu menú superior tiene una clase o ID como 'nav', 'header' o '.navbar', 
+       este bloque asegura que se mantenga al frente de todo */
+    header, nav, .navbar {
+        z-index: 9999 !important;
+    }
+    
+    .filters-container {
+        margin-top: 10px; /* Evita colisiones con el menú superior plano */
+        gap: 8px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px; /* Botones ligeramente más cómodos para pantallas táctiles */
+        font-size: 0.65rem;
+    }
+
+    /* Muestra la información de la foto fija en móviles ya que el 'hover' no existe en pantallas táctiles */
+    .photo-meta {
+        opacity: 1;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 12px;
+    }
+}
 
         /* ==========================================================================
            CONTENEDORES DE VIDEO Y ESCUDOS ANTI-COMPARTIR / ANTI-CANAL
