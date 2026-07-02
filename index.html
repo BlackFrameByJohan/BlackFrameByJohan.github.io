@@ -8,6 +8,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* ==========================================================================
+           VARIABLES Y ESTILOS GENERALES BÁSICOS (Asegurando compatibilidad si falta en style.css)
+           ========================================================================== */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ==========================================================================
+           SECCIÓN SOBRE MÍ (ABOUT)
+           ========================================================================== */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .about-image {
+            flex: 1 1 300px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #111;
+            aspect-ratio: 4 / 5;
+            position: relative;
+        }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+        .about-text {
+            flex: 2 1 400px;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        .about-text h3 {
+            font-size: 1rem;
+            color: #888;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+
+        /* ==========================================================================
            SECCIÓN FOTOGRAFÍA: FOTOS MÁS PEQUEÑAS Y 100% BLOQUEADAS
            ========================================================================== */
         .gallery {
@@ -43,17 +104,83 @@
         }
 
         /* ==========================================================================
-           SISTEMA DE SEGURIDAD (SOLO PARA VIDEOS CORPORATIVOS/MARCAS)
+           FILTROS DE VIDEO
            ========================================================================== */
+        .video-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #555;
+            color: #fff;
+            padding: 8px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* ==========================================================================
+           SISTEMA DE SEGURIDAD Y FORMATOS DE VIDEO
+           ========================================================================== */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Contenedor Horizontal (16:9) */
         .video-wrapper {
             position: relative;
             overflow: hidden;
             width: 100%;
             padding-bottom: 56.25%; 
             background: #000;
+            border-radius: 4px;
         }
 
-        .video-wrapper iframe {
+        /* Contenedor Vertical (Shorts - 9:16) */
+        .video-wrapper-vertical {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-bottom: 177.77%; /* Formato vertical 9:16 */
+            background: #000;
+            border-radius: 4px;
+        }
+
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        @media (max-width: 768px) {
+            .shorts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        .video-wrapper iframe, .video-wrapper-vertical iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -104,6 +231,7 @@
     <header>
         <div class="logo">BLACK FRAME<span class="sublogo">by JohanTG</span></div>
         <nav>
+            <a href="#about">Bio</a>
             <a href="#photography">Fotografía</a>
             <a href="#videography">Video</a>
             <a href="#contact">Contacto</a>
@@ -113,15 +241,33 @@
     <section class="hero">
         <div class="hero-content">
             <h1>BLACK FRAME</h1>
-            <p class="tagline">FOTOGRAFÍA & VIDEO </p>
-            <a href="#photography" class="btn-discover">Descubrir Portafolio</a>
+            <p class="tagline">FOTOGRAFÍA & VIDEO</p>
+            <a href="#about" class="btn-discover">Descubrir Portafolio</a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         NUEVA SECCIÓN: SOBRE MÍ (BIO)
+         ========================================== -->
+    <section id="about" class="section" style="background-color: #0a0a0a;">
+        <div class="about-container">
+            <div class="about-image">
+                <!-- REEMPLAZA AQUÍ EL ENLACE POR TU FOTO REAL -->
+                <img src="https://images.unsplash.com/photo-1554046920-90dc20696352?q=80&w=1000" alt="JohanTG - Fotógrafo y Videógrafo" draggable="false">
+            </div>
+            <div class="about-text">
+                <h2>JohanTG</h2>
+                <h3>Diseñador Industrial | Realizador Audiovisual</h3>
+                <p>Con 24 años de edad y una trayectoria ininterrumpida que inició en 2017, me especializo en la creación de narrativas visuales de alto impacto con un enfoque cinemático y milimétricamente estructurado.</p>
+                <p>Mi formación académica como Diseñador Industrial me ha otorgado una profunda comprensión de la estética, la composición geométrica y la funcionalidad. Esta visión técnica me permite abordar la fotografía y el video desde una perspectiva única: no solo capturo imágenes, sino que diseño conceptos visuales, fusionando el arte puro con la intención estratégica para transformar ideas en piezas sólidas y memorables.</p>
+            </div>
         </div>
     </section>
 
     <!-- SECCIÓN FOTOGRAFÍA -->
     <section id="photography" class="section">
-        <p class="section-meta">01 / PORTAFOLIO</p>
-        <h2 class="section-title">Fotografía</h2>
+        <p class="section-meta" style="text-align: center;">01 / PORTAFOLIO</p>
+        <h2 class="section-title" style="text-align: center;">Fotografía</h2>
         <div class="gallery">
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Fotografía Black Frame" draggable="false">
@@ -136,12 +282,21 @@
     </section>
 
     <!-- SECCIÓN VIDEOS -->
-    <section id="videography" class="section bg-darker">
-        <p class="section-meta">02 / TRABAJOS audiovisuales</p>
-        <h2 class="section-title">Videos</h2>
-        <div class="video-grid">
+    <section id="videography" class="section bg-darker" style="padding-top: 60px; padding-bottom: 80px;">
+        <p class="section-meta" style="text-align: center;">02 / TRABAJOS AUDIOVISUALES</p>
+        <h2 class="section-title" style="text-align: center;">Videos</h2>
+
+        <!-- FILTROS DE VIDEO -->
+        <div class="video-filters">
+            <button class="filter-btn active" onclick="filterVideos('all')">TODOS</button>
+            <button class="filter-btn" onclick="filterVideos('horizontal')">HORIZONTALES</button>
+            <button class="filter-btn" onclick="filterVideos('vertical')">VERTICALES</button>
+        </div>
+
+        <!-- CONTENEDOR DE VIDEOS HORIZONTALES -->
+        <div class="video-grid group-horizontal" id="horizontal-list">
             
-            <!-- 1. CHARCUTERO LEÑADOR (CON SEGURIDAD) -->
+            <!-- 0. CHARCUTERO LEÑADOR (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -155,7 +310,7 @@
                 </div>
             </div>
 
-            <!-- 2. LUMINACYCLE (CON SEGURIDAD) -->
+            <!-- 1. LUMINACYCLE (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -169,7 +324,7 @@
                 </div>
             </div>
 
-            <!-- 3. VENTE ANGIELLA (CON SEGURIDAD) -->
+            <!-- 2. VENTE ANGIELLA (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -183,7 +338,7 @@
                 </div>
             </div>
 
-            <!-- 4. TOWERS ANT - HACE TIEMPO NO TE VEO (LIBRE SIN ESCUDOS) -->
+            <!-- 3. TOWERS ANT - HACE TIEMPO NO TE VEO -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
@@ -195,7 +350,7 @@
                 </div>
             </div>
 
-            <!-- 5. LAMA GLAMA (CON SEGURIDAD) -->
+            <!-- 4. LAMA GLAMA (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -209,7 +364,7 @@
                 </div>
             </div>
 
-            <!-- 6. SIEMPRE ME HACES FALTA KEOFF OFICIAL (LIBRE SIN ESCUDOS) -->
+            <!-- 5. SIEMPRE ME HACES FALTA KEOFF OFICIAL -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(5)"></div>
@@ -221,7 +376,7 @@
                 </div>
             </div>
 
-            <!-- 7. TOWERS ANT - TE PASO A BUSCAR (LIBRE SIN ESCUDOS) -->
+            <!-- 6. TOWERS ANT - TE PASO A BUSCAR -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(6)"></div>
@@ -233,7 +388,7 @@
                 </div>
             </div>
 
-            <!-- 8. REDSKINS (CON SEGURIDAD) -->
+            <!-- 7. REDSKINS (CON SEGURIDAD) -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="top-left-shield"></div>
@@ -247,7 +402,7 @@
                 </div>
             </div>
 
-            <!-- 9. DENNISBBY ft TOWERS ANT - DEMONIA (LIBRE SIN ESCUDOS) -->
+            <!-- 8. DENNISBBY ft TOWERS ANT - DEMONIA -->
             <div class="video-item">
                 <div class="video-wrapper">
                     <div class="video-click-capture" onclick="focusVideo(8)"></div>
@@ -259,27 +414,162 @@
                 </div>
             </div>
 
+            <!-- ==============================================
+                 NUEVOS VIDEOS HORIZONTALES AGREGADOS (9 a 12)
+                 ============================================== -->
+            
+            <!-- 9. NUEVO HORIZONTAL 1 (CON SEGURIDAD) -->
+            <div class="video-item">
+                <div class="video-wrapper">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(9)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/N_yBIGzQ5ZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=N_yBIGzQ5ZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: left;">
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">PROYECTO AUDIOVISUAL COMERCIAL</h3>
+                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2020</p>
+                </div>
+            </div>
+
+            <!-- 10. NUEVO HORIZONTAL 2 (CON SEGURIDAD) -->
+            <div class="video-item">
+                <div class="video-wrapper">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(10)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/HVGgs5dgP9c?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=HVGgs5dgP9c&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: left;">
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">CAMPAÑA DE MARCA Y PRODUCTO</h3>
+                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2019</p>
+                </div>
+            </div>
+
+            <!-- 11. NUEVO HORIZONTAL 3 (CON SEGURIDAD) -->
+            <div class="video-item">
+                <div class="video-wrapper">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(11)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YJgOG2JXcrQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YJgOG2JXcrQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: left;">
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">COBERTURA Y ESTILO VISUAL</h3>
+                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2018</p>
+                </div>
+            </div>
+
+            <!-- 12. NUEVO HORIZONTAL 4 (CON SEGURIDAD) -->
+            <div class="video-item">
+                <div class="video-wrapper">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(12)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/C_zOqY6zUBg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=C_zOqY6zUBg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: left;">
+                    <h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">NARRATIVA Y DIRECCIÓN</h3>
+                    <p style="font-size: 0.7rem; color: #555555; letter-spacing: 1px;">VIDEO — 2018</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="height: 40px;"></div> <!-- Separador -->
+
+        <!-- CONTENEDOR DE VIDEOS VERTICALES (SHORTS) -->
+        <div class="shorts-grid group-vertical" id="vertical-list">
+            
+            <!-- 13. SHORT IZQUIERDA -->
+            <div class="video-item">
+                <div class="video-wrapper-vertical">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(13)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/o72JLfRYj1Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=o72JLfRYj1Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: center;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">FORMATO CORTO / SOCIAL</h3>
+                    <p style="font-size: 0.65rem; color: #555555; letter-spacing: 1px;">REEL — 2024</p>
+                </div>
+            </div>
+
+            <!-- 14. SHORT CENTRO -->
+            <div class="video-item">
+                <div class="video-wrapper-vertical">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(14)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Yreqm3Q057Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Yreqm3Q057Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: center;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DISEÑO EN MOVIMIENTO</h3>
+                    <p style="font-size: 0.65rem; color: #555555; letter-spacing: 1px;">REEL — 2023</p>
+                </div>
+            </div>
+
+            <!-- 15. SHORT DERECHA -->
+            <div class="video-item">
+                <div class="video-wrapper-vertical">
+                    <div class="top-left-shield"></div>
+                    <div class="bottom-full-shield"></div>
+                    <div class="video-click-capture" onclick="focusVideo(15)"></div>
+                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/z9sGg_2t29Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=z9sGg_2t29Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                </div>
+                <div class="video-info" style="margin-top: 15px; text-align: center;">
+                    <h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">ESTÉTICA COMERCIAL</h3>
+                    <p style="font-size: 0.65rem; color: #555555; letter-spacing: 1px;">REEL — 2023</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <footer id="contact">
         <div class="contact-content">
             <p class="section-meta">03 / CONECTAR</p>
-            <h2>Creemos algo juntos.</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Creemos algo juntos.</h2>
             <p class="contact-desc">Disponible para proyectos locales e internacionales.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/_johan_tg/" target="_blank"><i class="fab fa-instagram"></i> INSTAGRAM</a>
-                <a href="https://wa.me/5930983838908" target="_blank"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
-                <a href="mailto:johantg2019@gmail.com"><i class="fas fa-envelope"></i> EMAIL</a>
+            <div class="social-links" style="margin: 30px 0;">
+                <a href="https://www.instagram.com/_johan_tg/" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none;"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                <a href="https://wa.me/5930983838908" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none;"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+                <a href="mailto:johantg2019@gmail.com" style="margin: 0 15px; color: #fff; text-decoration: none;"><i class="fas fa-envelope"></i> EMAIL</a>
             </div>
-            <p class="copyright">&copy; 2026 BLACK FRAME. Todos los derechos reservados. Prohibida la reproducción de imágenes.</p>
+            <p class="copyright" style="color: #666; font-size: 0.8rem;">&copy; 2026 BLACK FRAME. Todos los derechos reservados. Prohibida la reproducción de imágenes.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 
-    <!-- MOTOR LÓGICO MULTIPLAYER -->
+    <!-- ==========================================================================
+         MOTOR LÓGICO Y FILTROS DE VIDEO
+         ========================================================================== -->
     <script>
+        // --- SISTEMA DE FILTROS ---
+        function filterVideos(type) {
+            // Actualizar botones visualmente
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const horizontals = document.getElementById('horizontal-list');
+            const verticals = document.getElementById('vertical-list');
+
+            if (type === 'all') {
+                horizontals.style.display = 'grid';
+                verticals.style.display = 'grid';
+            } else if (type === 'horizontal') {
+                horizontals.style.display = 'grid';
+                verticals.style.display = 'none';
+            } else if (type === 'vertical') {
+                horizontals.style.display = 'none';
+                verticals.style.display = 'grid';
+                // Hacer un pequeño scroll suave hacia los verticales si es necesario
+                verticals.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // --- SISTEMA DE YOUTUBE MULTIPLAYER ---
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -327,4 +617,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
