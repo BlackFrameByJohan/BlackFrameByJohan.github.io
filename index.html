@@ -110,7 +110,7 @@
         .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-       /* FOTOGRAFÍA COPTIONS Y BOTONES - ACTUALIZADO */
+     /* FOTOGRAFÍA COPTIONS Y BOTONES - ACTUALIZADO */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -140,41 +140,73 @@
     border-color: #fff;
 }
 
-/* Sistema Flexbox para que las fotos dicten su propia altura */
+/* Sistema Masonry (Columnas) para fotos verticales y horizontales */
 .gallery-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    column-count: 3;          /* 3 columnas en pantallas grandes */
+    column-gap: 20px;         /* Espacio horizontal entre columnas */
     max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
-    justify-content: center;
 }
+
 .gallery-item {
     position: relative;
+    margin-bottom: 20px;      /* Espacio vertical entre fotos */
     overflow: hidden;
     background: transparent !important; 
     border-radius: 2px; 
     border: 1px solid rgba(255,255,255,0.03);
-    flex: 1 1 300px; 
-    max-width: calc(33.333% - 14px); 
-    height: min-content !important; 
+    display: inline-block;    /* Evita que una foto se parta entre dos columnas */
+    width: 100%;              /* Obliga al item a heredar el ancho de la columna */
 }
+
 .gallery-item img {
     width: 100% !important;
-    height: auto !important; 
+    height: auto !important;  /* La altura la dicta la proporción original de la foto */
     display: block;
     object-fit: contain !important; 
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.gallery-item:hover img { transform: scale(1.03); }
-.photo-meta {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    box-sizing: border-box; opacity: 0; transition: opacity 0.3s ease;
+
+.gallery-item:hover img { 
+    transform: scale(1.03); 
 }
-.gallery-item:hover .photo-meta { opacity: 1; }
-.photo-meta h4 { margin: 0; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+
+.photo-meta {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    box-sizing: border-box; 
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .photo-meta { 
+    opacity: 1; 
+}
+
+.photo-meta h4 { 
+    margin: 0; 
+    font-size: 0.8rem; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
+}
+
+/* Responsivo para pantallas medianas y móviles */
+@media (max-width: 900px) {
+    .gallery-grid {
+        column-count: 2; /* 2 columnas en tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        column-count: 1; /* 1 sola columna en teléfonos */
+    }
+}
 
 /* REFUERZO PARA CELULARES (MENÚ Y AJUSTES) */
 @media (max-width: 768px) {
@@ -191,11 +223,6 @@
     .filter-btn {
         padding: 8px 16px;
         font-size: 0.65rem;
-    }
-
-    .gallery-item {
-        max-width: 100% !important;
-        flex: 1 1 100%;
     }
 
     /* En celulares muestra los títulos fijos para que no dependan del hover del mouse */
