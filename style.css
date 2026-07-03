@@ -143,7 +143,7 @@ nav a:hover {
     margin-bottom: 60px;
 }
 
-/* GALERÍA DE FOTOS */
+/* GALERÍA DE FOTOS (bloque genérico original — se deja intacto) */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -194,7 +194,7 @@ nav a:hover {
     font-weight: 500;
 }
 
-/* CUADRÍCULA DE VIDEOS MEJORADA */
+/* CUADRÍCULA DE VIDEOS MEJORADA (NO TOCADO) */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -279,7 +279,7 @@ footer h2 {
     text-transform: uppercase;
 }
 
-/* ADAPTACIÓN PARA CELULARES */
+/* ADAPTACIÓN PARA CELULARES (bloque general original) */
 @media (max-width: 768px) {
     header { padding: 30px 20px; }
     nav { display: none; }
@@ -289,4 +289,127 @@ footer h2 {
     .section-title { font-size: 1.5rem; margin-bottom: 40px; }
     .gallery { grid-template-columns: 1fr; }
     footer h2 { font-size: 1.6rem; }
+}
+
+/* =====================================================
+   FOTOGRAFÍA — FILTROS, BOTONES Y GALERÍA POR CATEGORÍAS
+   (Usa #photo-gallery para tener prioridad sobre el
+   bloque genérico .gallery-item de arriba, sin tocarlo,
+   y sin afectar nada de video)
+   ===================================================== */
+.filters-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px auto 50px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #888;
+    padding: 10px 24px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.filter-btn:hover, .filter-btn.active {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Contenedor de la Galería de fotos */
+#photo-gallery.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+/* Caja de cada foto: se adapta al formato real de la imagen (vertical u horizontal) */
+#photo-gallery .photo-item {
+    position: relative;
+    overflow: hidden;
+    background: transparent !important;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.03);
+    height: 420px; /* Altura de fila fija; el ancho varía solo según la foto */
+    aspect-ratio: unset !important; /* Anula el 3/2 del bloque genérico */
+    flex-grow: 1;
+    display: none; /* Controlado por JS */
+}
+
+/* Clase obligatoria para mostrar las fotos con comportamiento flexible */
+#photo-gallery .photo-item.show-item {
+    display: flex !important;
+}
+
+/* La imagen interna respeta SIEMPRE su proporción original, sea vertical u horizontal */
+#photo-gallery .photo-item img {
+    height: 100% !important;
+    width: auto !important;
+    max-width: 100%;
+    object-fit: contain !important; /* Anula el "cover" del bloque genérico: cero recortes */
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: auto !important; /* Anula el pointer-events:none del bloque genérico */
+}
+
+#photo-gallery .photo-item:hover img {
+    transform: scale(1.03);
+}
+
+#photo-gallery .photo-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#photo-gallery .photo-item:hover .photo-meta {
+    opacity: 1;
+}
+
+#photo-gallery .photo-meta h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Optimización estricta para celulares (solo fotos) */
+@media (max-width: 768px) {
+    #photo-gallery.gallery-grid {
+        gap: 15px;
+    }
+    #photo-gallery .photo-item {
+        height: auto !important; /* En móviles fluyen hacia abajo individualmente */
+        width: 100% !important;
+        flex-grow: 0;
+    }
+    #photo-gallery .photo-item img {
+        width: 100% !important;
+        height: auto !important;
+    }
+    #photo-gallery .photo-meta {
+        opacity: 1;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        padding: 12px;
+    }
 }
