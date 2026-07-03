@@ -140,7 +140,7 @@
     border-color: #fff;
 }
 
-/* Sistema Masonry (Columnas) para fotos verticales y horizontales */
+/* Sistema Masonry Puro (Columnas) para fotos mixtas */
 .gallery-grid {
     column-count: 3;          /* 3 columnas en pantallas grandes */
     column-gap: 20px;         /* Espacio horizontal entre columnas */
@@ -156,15 +156,21 @@
     background: transparent !important; 
     border-radius: 2px; 
     border: 1px solid rgba(255,255,255,0.03);
-    display: inline-block;    /* Evita que una foto se parta entre dos columnas */
-    width: 100%;              /* Obliga al item a heredar el ancho de la columna */
+    
+    /* SOLUCIÓN AL CORTE: Obliga a la foto a ser un bloque único e indivisible */
+    display: block;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    
+    width: 100%;              /* Se adapta al ancho de su columna */
 }
 
 .gallery-item img {
     width: 100% !important;
-    height: auto !important;  /* La altura la dicta la proporción original de la foto */
+    height: auto !important;  /* Respeta la proporción vertical u horizontal original */
     display: block;
-    object-fit: contain !important; 
+    object-fit: cover; 
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -210,7 +216,6 @@
 
 /* REFUERZO PARA CELULARES (MENÚ Y AJUSTES) */
 @media (max-width: 768px) {
-    /* Fuerza a que el menú se quede siempre arriba y visible en celulares */
     header, nav, .navbar, #main-nav {
         z-index: 99999 !important;
     }
@@ -225,7 +230,6 @@
         font-size: 0.65rem;
     }
 
-    /* En celulares muestra los títulos fijos para que no dependan del hover del mouse */
     .photo-meta {
         opacity: 1;
         background: linear-gradient(transparent, rgba(0,0,0,0.7));
