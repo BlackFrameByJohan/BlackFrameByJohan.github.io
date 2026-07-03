@@ -110,7 +110,7 @@
         .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-   /* FOTOGRAFÍA FILTROS Y BOTONES */
+  /* FOTOGRAFÍA FILTROS Y BOTONES */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -140,7 +140,7 @@
     border-color: #fff;
 }
 
-/* Galería Flexible Avanzada - Mantiene formatos reales de forma nativa */
+/* Contenedor de la Galería */
 .gallery-grid {
     display: flex;
     flex-wrap: wrap;
@@ -151,33 +151,34 @@
     justify-content: center;
 }
 
-/* El secreto: flex-grow permite que la foto ocupe su ancho real sin reencuadres */
-.gallery-item {
+/* Caja de cada foto: Se adapta al formato real de la imagen */
+.photo-item {
     position: relative;
     overflow: hidden;
     background: transparent !important;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.03);
-    height: 400px; /* Controla la altura uniforme de la fila; las fotos horizontales y verticales se adaptan solas proporcionalmente */
+    height: 420px; /* Altura de fila fija para que se alineen bonito; el ancho varía solo según la foto */
     flex-grow: 1;
-    display: none; /* Se ocultan por defecto para que el JS las gestione de forma segura */
+    display: none; /* Controlado por JS */
 }
 
-/* Esto obliga a que cuando el JavaScript las muestre, usen 'flex' en vez de 'block' para no romper la estructura */
-.gallery-item.show-item {
-    display: flex !important; 
+/* Clase obligatoria para mostrar las fotos con comportamiento flexible */
+.photo-item.show-item {
+    display: flex !important;
 }
 
-.gallery-item img {
+/* La imagen interna respeta su proporción original del archivo de Cloudinary */
+.photo-item img {
     height: 100% !important;
-    width: auto !important; /* El ancho se calcula automáticamente basándose en la forma original de la foto */
+    width: auto !important; /* El ancho se calcula automáticamente */
     max-width: 100%;
-    object-fit: contain !important; /* Prohíbe terminantemente cualquier tipo de corte */
+    object-fit: contain !important; /* Cero recortes, muestra la foto completa */
     display: block;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.gallery-item:hover img {
+.photo-item:hover img {
     transform: scale(1.03);
 }
 
@@ -193,7 +194,7 @@
     transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .photo-meta {
+.photo-item:hover .photo-meta {
     opacity: 1;
 }
 
@@ -204,24 +205,17 @@
     text-transform: uppercase;
 }
 
-/* Ajuste responsivo para celulares */
+/* Optimización estricta para celulares */
 @media (max-width: 768px) {
-    header, nav, .navbar, #main-nav {
-        z-index: 99999 !important;
+    .gallery-grid {
+        gap: 15px;
     }
-    .filters-container {
-        margin-top: 10px;
-        gap: 8px;
-    }
-    .filter-btn {
-        padding: 8px 16px;
-        font-size: 0.65rem;
-    }
-    .gallery-item {
-        height: auto !important; /* En móviles es mejor que caigan en cascada por su ancho */
+    .photo-item {
+        height: auto !important; /* En móviles fluyen hacia abajo individualmente */
         width: 100% !important;
+        flex-grow: 0;
     }
-    .gallery-item img {
+    .photo-item img {
         width: 100% !important;
         height: auto !important;
     }
@@ -596,13 +590,13 @@
         </div>
     </footer>
 
-    <!-- LÓGICA DE FILTROS Y REPRODUCTORES -->
+   <!-- LÓGICA DE FILTROS Y REPRODUCTORES -->
     <script>
         function filterPhotos(category) {
-            const items = document.querySelectorAll('.gallery-item');
+            const items = document.querySelectorAll('.photo-item');
             const buttons = document.querySelectorAll('#photography .filter-btn');
 
-            // Cambiar estado activo en los botones de fotos de forma segura
+            // Actualizar botones de fotografía
             buttons.forEach(btn => {
                 btn.classList.remove('active');
                 if(btn.getAttribute('onclick').includes(category)) {
@@ -610,7 +604,7 @@
                 }
             });
 
-            // Filtrar las fotos agregando la clase flexible que respeta los formatos originales
+            // Aplicar el filtro usando la clase flexible corregida
             items.forEach(item => {
                 if (category === 'all-p' || item.classList.contains(category)) {
                     item.classList.add('show-item');
@@ -620,7 +614,7 @@
             });
         }
 
-        // Forzar la carga inicial correcta de las fotos al entrar a la página
+        // Carga inicial automatizada al abrir la página
         document.addEventListener("DOMContentLoaded", function() {
             filterPhotos('all-p');
         });
