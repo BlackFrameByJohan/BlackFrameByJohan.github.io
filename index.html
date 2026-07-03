@@ -110,7 +110,7 @@
         .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-    /* FOTOGRAFÍA COPTIONS Y BOTONES */
+   /* FOTOGRAFÍA FILTROS Y BOTONES */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -140,86 +140,91 @@
     border-color: #fff;
 }
 
-/* Rejilla Flexible Avanzada: Elimina las columnas fijas que cortan las fotos */
+/* Galería Flexible Avanzada - Mantiene formatos reales de forma nativa */
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 25px;
-    max-width: 1400px; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-    align-items: start; /* Alinea los elementos al inicio para respetar alturas reales */
+    justify-content: center;
 }
 
+/* El secreto: flex-grow permite que la foto ocupe su ancho real sin reencuadres */
 .gallery-item {
     position: relative;
     overflow: hidden;
-    background: transparent !important; 
-    border-radius: 2px; 
+    background: transparent !important;
+    border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.03);
-    width: 100%;
+    height: 400px; /* Controla la altura uniforme de la fila; las fotos horizontales y verticales se adaptan solas proporcionalmente */
+    flex-grow: 1;
+    display: none; /* Se ocultan por defecto para que el JS las gestione de forma segura */
 }
 
-/* Configuración para respetar el formato original de la foto */
+/* Esto obliga a que cuando el JavaScript las muestre, usen 'flex' en vez de 'block' para no romper la estructura */
+.gallery-item.show-item {
+    display: flex !important; 
+}
+
 .gallery-item img {
-    width: 100% !important;
-    height: auto !important;  /* La altura se adapta de forma 100% proporcional al archivo original */
+    height: 100% !important;
+    width: auto !important; /* El ancho se calcula automáticamente basándose en la forma original de la foto */
+    max-width: 100%;
+    object-fit: contain !important; /* Prohíbe terminantemente cualquier tipo de corte */
     display: block;
-    object-fit: contain !important; /* Prohíbe cualquier tipo de corte o reencuadre */
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.gallery-item:hover img { 
-    transform: scale(1.03); 
+.gallery-item:hover img {
+    transform: scale(1.03);
 }
 
 .photo-meta {
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     padding: 20px;
     background: linear-gradient(transparent, rgba(0,0,0,0.85));
-    box-sizing: border-box; 
-    opacity: 0; 
+    box-sizing: border-box;
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.gallery-item:hover .photo-meta { 
-    opacity: 1; 
+.gallery-item:hover .photo-meta {
+    opacity: 1;
 }
 
-.photo-meta h4 { 
-    margin: 0; 
-    font-size: 0.8rem; 
-    letter-spacing: 1px; 
-    text-transform: uppercase; 
+.photo-meta h4 {
+    margin: 0;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* Responsivo para pantallas móviles */
-@media (max-width: 600px) {
-    .gallery-grid {
-        grid-template-columns: 1fr; /* Una sola fila de fotos en celulares */
-        gap: 15px;
-    }
-}
-
-/* REFUERZO PARA CELULARES (MENÚ Y AJUSTES) */
+/* Ajuste responsivo para celulares */
 @media (max-width: 768px) {
     header, nav, .navbar, #main-nav {
         z-index: 99999 !important;
     }
-    
     .filters-container {
         margin-top: 10px;
         gap: 8px;
     }
-    
     .filter-btn {
         padding: 8px 16px;
         font-size: 0.65rem;
     }
-
+    .gallery-item {
+        height: auto !important; /* En móviles es mejor que caigan en cascada por su ancho */
+        width: 100% !important;
+    }
+    .gallery-item img {
+        width: 100% !important;
+        height: auto !important;
+    }
     .photo-meta {
         opacity: 1;
         background: linear-gradient(transparent, rgba(0,0,0,0.7));
@@ -594,15 +599,33 @@
     <!-- LÓGICA DE FILTROS Y REPRODUCTORES -->
     <script>
         function filterPhotos(category) {
-            document.querySelectorAll('#photography .filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            const items = document.querySelectorAll('.photo-item');
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('#photography .filter-btn');
+
+            // Cambiar estado activo en los botones de fotos de forma segura
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('onclick').includes(category)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filtrar las fotos agregando la clase flexible que respeta los formatos originales
             items.forEach(item => {
-                if (category === 'all-p') { item.style.display = 'block'; }
-                else { item.style.display = item.classList.contains(category) ? 'block' : 'none'; }
+                if (category === 'all-p' || item.classList.contains(category)) {
+                    item.classList.add('show-item');
+                } else {
+                    item.classList.remove('show-item');
+                }
             });
         }
 
+        // Forzar la carga inicial correcta de las fotos al entrar a la página
+        document.addEventListener("DOMContentLoaded", function() {
+            filterPhotos('all-p');
+        });
+
+        // ================= NO TOCAR: LÓGICA DE VIDEOS EXACTAMENTE IGUAL =================
         function filterVideos(type) {
             document.querySelectorAll('#videography .filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
