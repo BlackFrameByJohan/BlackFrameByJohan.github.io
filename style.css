@@ -337,16 +337,18 @@ footer h2 {
     justify-content: center;
 }
 
-/* Caja de cada foto: se adapta al formato real de la imagen (vertical u horizontal) */
+/* Caja de cada foto: se adapta al formato real de la imagen (vertical u horizontal),
+   pero SIN estirarse para llenar espacio sobrante y en tamaño compacto */
 #photo-gallery .photo-item {
     position: relative;
     overflow: hidden;
     background: transparent !important;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.03);
-    height: 420px; /* Altura de fila fija; el ancho varía solo según la foto */
+    height: 260px; /* Fotos más pequeñas y compactas */
     aspect-ratio: unset !important; /* Anula el 3/2 del bloque genérico */
-    flex-grow: 1;
+    flex-grow: 0; /* Ya no se estiran para llenar espacio sobrante */
+    flex-shrink: 0;
     display: none; /* Controlado por JS */
 }
 
