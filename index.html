@@ -110,7 +110,7 @@
         .about-text h3 { font-size: 0.85rem; color: #cc0000; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; font-weight: 600; }
         .about-text p { font-size: 1.05rem; line-height: 1.8; color: #bcbcbc; margin-bottom: 20px; font-weight: 300; }
 
-     /* FOTOGRAFÍA COPTIONS Y BOTONES - ACTUALIZADO */
+    /* FOTOGRAFÍA COPTIONS Y BOTONES */
 .filters-container {
     display: flex;
     justify-content: center;
@@ -140,37 +140,32 @@
     border-color: #fff;
 }
 
-/* Sistema Masonry Puro (Columnas) para fotos mixtas */
+/* Rejilla Flexible Avanzada: Elimina las columnas fijas que cortan las fotos */
 .gallery-grid {
-    column-count: 3;          /* 3 columnas en pantallas grandes */
-    column-gap: 20px;         /* Espacio horizontal entre columnas */
-    max-width: 1200px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    max-width: 1400px; 
     margin: 0 auto;
     padding: 0 20px;
+    align-items: start; /* Alinea los elementos al inicio para respetar alturas reales */
 }
 
 .gallery-item {
     position: relative;
-    margin-bottom: 20px;      /* Espacio vertical entre fotos */
     overflow: hidden;
     background: transparent !important; 
     border-radius: 2px; 
     border: 1px solid rgba(255,255,255,0.03);
-    
-    /* SOLUCIÓN AL CORTE: Obliga a la foto a ser un bloque único e indivisible */
-    display: block;
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    
-    width: 100%;              /* Se adapta al ancho de su columna */
+    width: 100%;
 }
 
+/* Configuración para respetar el formato original de la foto */
 .gallery-item img {
     width: 100% !important;
-    height: auto !important;  /* Respeta la proporción vertical u horizontal original */
+    height: auto !important;  /* La altura se adapta de forma 100% proporcional al archivo original */
     display: block;
-    object-fit: cover; 
+    object-fit: contain !important; /* Prohíbe cualquier tipo de corte o reencuadre */
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
@@ -201,16 +196,11 @@
     text-transform: uppercase; 
 }
 
-/* Responsivo para pantallas medianas y móviles */
-@media (max-width: 900px) {
-    .gallery-grid {
-        column-count: 2; /* 2 columnas en tablets */
-    }
-}
-
+/* Responsivo para pantallas móviles */
 @media (max-width: 600px) {
     .gallery-grid {
-        column-count: 1; /* 1 sola columna en teléfonos */
+        grid-template-columns: 1fr; /* Una sola fila de fotos en celulares */
+        gap: 15px;
     }
 }
 
@@ -329,7 +319,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN FOTOGRAFÍA CON ESPACIOS POR CATEGORÍA -->
+   <!-- SECCIÓN FOTOGRAFÍA CON ESPACIOS POR CATEGORÍA -->
 <section id="photography" style="padding: 80px 0; background: #050505;">
     <p style="text-align: center; color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">01 / PORTAFOLIO FIJO</p>
     <h2 style="text-align: center; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; font-weight: 800;">Fotografía</h2>
@@ -346,26 +336,25 @@
         
         <!-- ================= BODAS & PAREJAS ================= -->
         <div class="gallery-item photo-item bodas">
-            <img src="images/boda1.jpg" alt="Bodas" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782897045/IMG_8028_pbl2jf.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782897045/IMG_8028_pbl2jf.jpg" alt="Bodas" draggable="false">
             <div class="photo-meta"><h4>Bodas & Parejas</h4></div>
         </div>
         <div class="gallery-item photo-item bodas">
-            <img src="images/boda2.jpg" alt="Bodas" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782897074/IMG_7666_potfm9.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782897074/IMG_7666_potfm9.jpg" alt="Bodas" draggable="false">
             <div class="photo-meta"><h4>Bodas & Parejas</h4></div>
         </div>
         <div class="gallery-item photo-item bodas"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782897043/IMG_7667_xy66h2.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas</h4></div></div>
         <div class="gallery-item photo-item bodas"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782894904/IMG_2890_hynxpx.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas</h4></div></div>
         <div class="gallery-item photo-item bodas"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782894905/IMG_2954_bcrzd0.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas</h4></div></div>
         <div class="gallery-item photo-item bodas"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782894907/IMG_2925_wvnvqr.jpg" alt="Bodas" draggable="false"><div class="photo-meta"><h4>Bodas & Parejas</h4></div></div>
-        
 
         <!-- ================= RETRATOS & MODELOS ================= -->
         <div class="gallery-item photo-item retratos">
-            <img src="images/retrato1.jpg" alt="Retratos" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782977468/IMG_2749_shmpe8.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782977468/IMG_2749_shmpe8.jpg" alt="Retratos" draggable="false">
             <div class="photo-meta"><h4>Retratos & Modelos</h4></div>
         </div>
         <div class="gallery-item photo-item retratos">
-            <img src="images/retrato2.jpg" alt="Retratos" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782977471/IMG_2453_cdhyeq.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782977471/IMG_2453_cdhyeq.jpg" alt="Retratos" draggable="false">
             <div class="photo-meta"><h4>Retratos & Modelos</h4></div>
         </div>
         <div class="gallery-item photo-item retratos"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782896335/IMG_6689_jqfxcz.jpg" alt="Retratos" draggable="false"><div class="photo-meta"><h4>Retratos & Modelos</h4></div></div>
@@ -388,11 +377,11 @@
 
         <!-- ================= PRODUCTO & GASTRO ================= -->
         <div class="gallery-item photo-item producto">
-            <img src="images/producto1.jpg" alt="Producto" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782977508/default_1.45.1_ekr35b.png'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782977508/default_1.45.1_ekr35b.png" alt="Producto" draggable="false">
             <div class="photo-meta"><h4>Producto & Gastronomía</h4></div>
         </div>
         <div class="gallery-item photo-item producto">
-            <img src="images/comida1.jpg" alt="Comida" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782897050/IMG_7398_belwgq.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782897050/IMG_7398_belwgq.jpg" alt="Comida" draggable="false">
             <div class="photo-meta"><h4>Producto & Gastronomía</h4></div>
         </div>
         <div class="gallery-item photo-item producto"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782897227/IMG_7504_mkwtyv.jpg" alt="Producto" draggable="false"><div class="photo-meta"><h4>Producto & Gastronomía</h4></div></div>
@@ -406,11 +395,11 @@
 
         <!-- ================= ESTRUCTURAS & PERSONAL ================= -->
         <div class="gallery-item photo-item arquitectura">
-            <img src="images/arquitectura1.jpg" alt="Arquitectura" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782896800/IMG_5651_qaqjqv.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782896800/IMG_5651_qaqjqv.jpg" alt="Arquitectura" draggable="false">
             <div class="photo-meta"><h4>Estructuras & Personal</h4></div>
         </div>
         <div class="gallery-item photo-item arquitectura">
-            <img src="images/arquitectura2.jpg" alt="Arquitectura" draggable="false" onerror="this.src='https://res.cloudinary.com/iobehwrp/image/upload/v1782896796/IMG_5646_h040eq.jpg'">
+            <img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782896796/IMG_5646_h040eq.jpg" alt="Arquitectura" draggable="false">
             <div class="photo-meta"><h4>Estructuras & Personal</h4></div>
         </div>
         <div class="gallery-item photo-item arquitectura"><img src="https://res.cloudinary.com/iobehwrp/image/upload/v1782896760/IMG_5612_plbwkl.jpg" alt="Arquitectura" draggable="false"><div class="photo-meta"><h4>Estructuras & Personal</h4></div></div>
