@@ -164,6 +164,46 @@
             padding: 80px 20px; text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
         }
+
+        /* ==========================================================================
+           MENÚ MÓVIL (AÑADIDO) — no altera nada más, solo se activa en pantallas chicas
+           ========================================================================== */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        @media (max-width: 768px) {
+            header nav { display: none; }
+            .mobile-menu-toggle { display: inline-block; }
+        }
+        .mobile-nav-dropdown {
+            display: none;
+            position: fixed;
+            top: 64px;
+            right: 20px;
+            background: rgba(5,5,5,0.98);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 150;
+            min-width: 180px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .mobile-nav-dropdown.open { display: flex; flex-direction: column; }
+        .mobile-nav-dropdown a {
+            color: #aaa;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .mobile-nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.05); }
     </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
@@ -176,7 +216,17 @@
             <a href="#videography">Video</a>
             <a href="#contact">Contacto</a>
         </nav>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
+
+    <div class="mobile-nav-dropdown" id="mobileNavDropdown">
+        <a href="#about" onclick="closeMobileMenu()">Bio</a>
+        <a href="#photography" onclick="closeMobileMenu()">Fotografía</a>
+        <a href="#videography" onclick="closeMobileMenu()">Video</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contacto</a>
+    </div>
 
     <section class="hero">
         <div class="hero-content">
@@ -549,6 +599,21 @@
             var currentCapture = document.querySelectorAll('.video-click-capture')[activeIndex];
             if (currentCapture) { currentCapture.style.pointerEvents = 'none'; }
         }
+
+        // ================= MENÚ MÓVIL (AÑADIDO) =================
+        function toggleMobileMenu() {
+            document.getElementById('mobileNavDropdown').classList.toggle('open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileNavDropdown').classList.remove('open');
+        }
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('mobileNavDropdown');
+            const toggleBtn = document.querySelector('.mobile-menu-toggle');
+            if (dropdown.classList.contains('open') && !dropdown.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
     </script>
 </body>
 </html>
