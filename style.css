@@ -435,3 +435,27 @@ footer h2 {
         padding: 12px;
     }
 }
+
+/* ==========================================================================
+   BLINDAJE ESPECÍFICO PARA LA FOTO DE BIOGRAFÍA / BIO (ENLACES Y CARPETAS)
+   ========================================================================== */
+[class*="bio"] img, 
+[class*="about"] img, 
+[class*="profile"] img,
+img[src*="perfil"],
+img[src*="bio"],
+img[src*="about"] {
+    pointer-events: none !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
+}
+
+/* Bloqueo extra por si la foto de la bio está envuelta en un enlace externo */
+[class*="bio"] a, [class*="about"] a, [class*="profile"] a {
+    -webkit-touch-callout: none !important;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
+}
