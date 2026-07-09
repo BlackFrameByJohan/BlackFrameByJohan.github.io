@@ -160,6 +160,16 @@
             position: absolute; bottom: 0; left: 0; width: 15%; height: 45px; z-index: 12; background: transparent;
         }
 
+        /* ESCUDOS EXCLUSIVOS PARA VIDEOS VERTICALES (SHORTS): solo queda libre el centro
+           (para pausar/reproducir) y una esquina superior derecha; todo lo demás arriba
+           a la izquierda y toda la franja inferior quedan bloqueados. */
+        .shield-top-left-v {
+            position: absolute; top: 0; left: 0; width: 62%; height: 70px; z-index: 12; background: transparent;
+        }
+        .shield-bottom-full-v {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; z-index: 12; background: transparent;
+        }
+
         footer {
             padding: 80px 20px; text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05); background: #020202;
@@ -380,7 +390,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(0)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/HVGgs5dgP9c?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=HVGgs5dgP9c&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="SFZHZ3M1ZGdQOWM=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">ABUELA MAGDA SHORT</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2026</p></div>
             </div>
@@ -389,7 +399,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(1)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YJgOG2JXcrQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YJgOG2JXcrQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="WUpnT0cySlhjclE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">AIRBNB QUINTA VELÁSTEGUI</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2026</p></div>
             </div>
@@ -398,7 +408,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(2)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/C_zOqY6zUBg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=C_zOqY6zUBg&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="Q196T3FZNnpVQmc=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">ABUELA MAGDA LONG</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2026</p></div>
             </div>
@@ -407,7 +417,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(3)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/N_yBIGzQ5ZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=N_yBIGzQ5ZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="Tl95QklHelE1WlE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">BARRACUDA</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2025</p></div>
             </div>
@@ -416,7 +426,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(4)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/YgkKt_-cB_g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=YgkKt_-cB_g&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="WWdrS3RfLWNCX2c=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">EXPERIENCIA Y RESUMEN DE CURSO - CHARCUTERO LEÑADOR</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2025</p></div>
             </div>
@@ -425,7 +435,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(5)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/B-KO_RlynAA?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=B-KO_RlynAA&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="Qi1LT19SbHluQUE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LUMINACYCLE - PRODUCTO DE DISEÑO</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2025</p></div>
             </div>
@@ -434,7 +444,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(6)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rIhOsdOEEZw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rIhOsdOEEZw&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="ckloT3NkT0VFWnc=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">VENTE ANGIELLA</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2024</p></div>
             </div>
@@ -443,7 +453,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(7)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/iH1Dfa2kqmI?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=iH1Dfa2kqmI&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="aUgxRGZhMmtxbUk=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - HACE TIEMPO NO TE VEO</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2024</p></div>
             </div>
@@ -452,7 +462,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(8)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hPWzdoeQlbo?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hPWzdoeQlbo&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="aFBXemRvZVFsYm8=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">LAMA GLAMA - ENTREVISTA</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2023</p></div>
             </div>
@@ -461,7 +471,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(9)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/tHS9mCiuBcg?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=tHS9mCiuBcg&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="dEhTOW1DaXVCY2c=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">SIEMPRE ME HACES FALTA KEOFF OFICIAL</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2023</p></div>
             </div>
@@ -470,7 +480,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(10)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/rPY4IWxWIt0?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=rPY4IWxWIt0&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="clBZNElXeFdJdDA=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">TOWERS ANT - TE PASO A BUSCAR</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2022</p></div>
             </div>
@@ -479,7 +489,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(11)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/hhmS6yTgoZQ?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=hhmS6yTgoZQ&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="aGhtUzZ5VGdvWlE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">REDSKINS</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO — 2022</p></div>
             </div>
@@ -488,7 +498,7 @@
                 <div class="video-container-box ratio-horizontal">
                     <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
                     <div class="video-click-capture" onclick="focusVideo(12)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Rbv-yhOezFE?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Rbv-yhOezFE&controls=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="UmJ2LXloT2V6RkU=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px;"><h3 style="font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">DENNISBBY ft TOWERS ANT - DEMONIA</h3><p style="font-size: 0.7rem; color: #555; letter-spacing: 1px;">VIDEO OFICIAL — 2021</p></div>
             </div>
@@ -501,27 +511,27 @@
             <!-- WHISKY LEGACY -->
             <div class="video-item">
                 <div class="video-container-box ratio-vertical">
-                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
+                    <div class="shield-top-left-v"></div><div class="shield-bottom-full-v"></div>
                     <div class="video-click-capture" onclick="focusVideo(13)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/o72JLfRYj1Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=o72JLfRYj1Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="bzcySkxmUllqMVE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: center;"><h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">WHISKY LEGACY</h3><p style="font-size: 0.65rem; color: #555; letter-spacing: 1px;">SHORT — 2025</p></div>
             </div>
             <!-- KAFFA SAN VALENTÍN -->
             <div class="video-item">
                 <div class="video-container-box ratio-vertical">
-                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
+                    <div class="shield-top-left-v"></div><div class="shield-bottom-full-v"></div>
                     <div class="video-click-capture" onclick="focusVideo(14)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/Yreqm3Q057Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Yreqm3Q057Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="WXJlcW0zUTA1N1E=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: center;"><h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">KAFFA SAN VALENTÍN</h3><p style="font-size: 0.65rem; color: #555; letter-spacing: 1px;">SHORT — 2025</p></div>
             </div>
             <!-- KAFFA DÍA DE LA MADRE -->
             <div class="video-item">
                 <div class="video-container-box ratio-vertical">
-                    <div class="shield-top"></div><div class="shield-bottom-right"></div><div class="shield-bottom-left"></div>
+                    <div class="shield-top-left-v"></div><div class="shield-bottom-full-v"></div>
                     <div class="video-click-capture" onclick="focusVideo(15)"></div>
-                    <iframe class="portfolio-video" src="https://www.youtube.com/embed/z9sGg_2t29Q?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=z9sGg_2t29Q&controls=1&modestbranding=1&rel=0&fs=0" allow="autoplay; encrypted-media"></iframe>
+                    <iframe class="portfolio-video" data-vid="ejlzR2dfMnQyOVE=" allow="autoplay; encrypted-media" sandbox="allow-scripts allow-same-origin allow-presentation" referrerpolicy="no-referrer"></iframe>
                 </div>
                 <div class="video-info" style="margin-top: 15px; text-align: center;"><h3 style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">KAFFA DÍA DE LA MADRE</h3><p style="font-size: 0.65rem; color: #555; letter-spacing: 1px;">SHORT — 2025</p></div>
             </div>
@@ -580,6 +590,24 @@
             else if (type === 'horizontal') { horizontals.style.display = 'grid'; verticals.style.display = 'none'; }
             else if (type === 'vertical') { horizontals.style.display = 'none'; verticals.style.display = 'grid'; }
         }
+
+        // ================= SEGURIDAD: IDs DE YOUTUBE OFUSCADOS =================
+        // Los IDs de video no quedan escritos en texto plano en el HTML (para dificultar
+        // que alguien los copie directo desde el código fuente / repositorio de GitHub).
+        // Se guardan codificados en base64 en el atributo data-vid y se decodifican y
+        // arman en tiempo de ejecución, justo antes de inicializar el reproductor.
+        function decodeVid(enc) { return atob(enc); }
+
+        function buildSecureSources() {
+            document.querySelectorAll('.portfolio-video[data-vid]').forEach(function (iframe) {
+                var id = decodeVid(iframe.getAttribute('data-vid'));
+                var src = 'https://www.youtube-nocookie.com/embed/' + id +
+                    '?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=' + id +
+                    '&controls=1&modestbranding=1&rel=0&fs=0&iv_load_policy=3&disablekb=1';
+                iframe.setAttribute('src', src);
+            });
+        }
+        buildSecureSources();
 
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
