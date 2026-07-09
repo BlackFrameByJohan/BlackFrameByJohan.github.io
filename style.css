@@ -143,7 +143,7 @@ nav a:hover {
     margin-bottom: 60px;
 }
 
-/* GALERÍA DE FOTOS (bloque genérico original — se deja intacto) */
+/* GALERÍA DE FOTOS (bloque genérico original — modificado con seguridad) */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -163,6 +163,13 @@ nav a:hover {
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     pointer-events: none;
+    
+    /* BLOQUEO PARA CELULARES Y ARRASTRES */
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    user-drag: none !important;
 }
 
 .gallery-item:hover img {
@@ -293,9 +300,6 @@ footer h2 {
 
 /* =====================================================
    FOTOGRAFÍA — FILTROS, BOTONES Y GALERÍA POR CATEGORÍAS
-   (Usa #photo-gallery para tener prioridad sobre el
-   bloque genérico .gallery-item de arriba, sin tocarlo,
-   y sin afectar nada de video)
    ===================================================== */
 .filters-container {
     display: flex;
@@ -337,8 +341,7 @@ footer h2 {
     justify-content: center;
 }
 
-/* Caja de cada foto: se adapta al formato real de la imagen (vertical u horizontal),
-   pero SIN estirarse para llenar espacio sobrante y en tamaño compacto */
+/* Caja de cada foto: modificada para evitar comportamientos de guardado */
 #photo-gallery .photo-item {
     position: relative;
     overflow: hidden;
@@ -350,6 +353,11 @@ footer h2 {
     flex-grow: 0; /* Ya no se estiran para llenar espacio sobrante */
     flex-shrink: 0;
     display: none; /* Controlado por JS */
+    
+    /* EVITA EL COPIADO DEL ENLACE O ARRASTRE DE LA CAJA CONTENEDORA */
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
 }
 
 /* Clase obligatoria para mostrar las fotos con comportamiento flexible */
@@ -357,7 +365,7 @@ footer h2 {
     display: flex !important;
 }
 
-/* La imagen interna respeta SIEMPRE su proporción original, sea vertical u horizontal */
+/* La imagen interna: Totalmente blindada en tu galería de perfil */
 #photo-gallery .photo-item img {
     height: 100% !important;
     width: auto !important;
@@ -365,7 +373,19 @@ footer h2 {
     object-fit: contain !important; /* Anula el "cover" del bloque genérico: cero recortes */
     display: block;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    pointer-events: auto !important; /* Anula el pointer-events:none del bloque genérico */
+    
+    /* CAMBIO CLAVE: Cambiado de auto a none para bloquear clics directos/guardados directos en móvil */
+    pointer-events: none !important; 
+
+    /* BLOQUEO DE SEGURIDAD MÓVIL Y ESCRITORIO AVANZADO */
+    -webkit-touch-callout: none !important; /* Bloquea el menú "Guardar Imagen" en iOS / Safari */
+    -webkit-user-select: none !important;   /* Bloquea la selección en Safari */
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;      /* Bloquea en Firefox */
+    -ms-user-select: none !important;
+    user-select: none !important;           /* Bloquea selección estándar */
+    -webkit-user-drag: none !important;     /* Evita que arrastren la foto para guardarla */
+    user-drag: none !important;
 }
 
 #photo-gallery .photo-item:hover img {
