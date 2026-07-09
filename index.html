@@ -543,9 +543,9 @@
             <p style="color: #555; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; margin: 0;">03 / CONECTAR</p>
             <h2 style="font-size: 2rem; margin-bottom: 10px; font-weight: 800; letter-spacing: 1px;">Creemos algo juntos.</h2>
             <div class="social-links" style="margin: 30px 0;">
-                <a href="https://www.instagram.com/_johan_tg/" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-instagram"></i> INSTAGRAM</a>
-                <a href="https://wa.me/5930983838908" target="_blank" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
-                <a href="mailto:johantg2019@gmail.com" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fas fa-envelope"></i> EMAIL</a>
+                <a data-href="aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9fam9oYW5fdGcv" target="_blank" rel="noopener" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-instagram"></i> INSTAGRAM</a>
+                <a data-href="aHR0cHM6Ly93YS5tZS81OTMwOTgzODM4OTA4" target="_blank" rel="noopener" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+                <a data-href="bWFpbHRvOmpvaGFudGcyMDE5QGdtYWlsLmNvbQ==" style="margin: 0 15px; color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 1.5px;"><i class="fas fa-envelope"></i> EMAIL</a>
             </div>
             <p style="color: #444; font-size: 0.75rem; margin-top: 40px;">&copy; 2026 BLACK FRAME. Todos los derechos reservados. Prohibida la reproducción de imágenes.</p>
         </div>
@@ -608,6 +608,14 @@
             });
         }
         buildSecureSources();
+
+        // Enlaces de redes/contacto también ofuscados en base64 (Instagram, WhatsApp, Email)
+        function buildSecureLinks() {
+            document.querySelectorAll('a[data-href]').forEach(function (a) {
+                a.setAttribute('href', atob(a.getAttribute('data-href')));
+            });
+        }
+        buildSecureLinks();
 
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
